@@ -13,8 +13,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npx json-server --watch db.json --host 0.0.0.0 --port $PORT",
-    "build": "echo 'No build required for JSON Server'",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "db": "json-server --watch db.json --port 3001",

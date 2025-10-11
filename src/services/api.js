@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = 'https://auctionjson.onrender.com';
 
 // Robust request helper that tries both string and number ID formats
 const requestWithIdFallback = async (basePath, id, options = {}) => {
