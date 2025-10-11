@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Test - Auction Layout</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #0f172a; color: #e5e7eb; }
+        .test-container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: #111827; 
+            padding: 16px; 
+            border-radius: 8px;
+        }
+        .size-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #22c55e;
+            color: #051306;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        .team-title { font-size: 16px; font-weight: bold; }
+        .purse-input { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end;
+        }
+        .purse-input label { font-size: 12px; margin-bottom: 4px; color: #94a3b8; }
+        .purse-input input { 
+            width: 100px; 
+            padding: 8px; 
+            background: #0b1220; 
+            border: 1px solid #182535; 
+            color: #e5e7eb; 
+            border-radius: 4px;
+        }
+        .player-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            width: 100%;
+            max-width: 100%;
+        }
+        .player-card {
+            background: #0b1220;
+            border: 1px solid #182535;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="size-indicator" id="sizeIndicator"></div>
+    
+    <div class="test-container">
+        <h2>Responsive Test - Under 500px</h2>
+        
+        <!-- Team Owner Header -->
+        <div class="team-header">
+            <div class="team-title">Teams owners</div>
+            <div class="purse-input">
+                <label>Global Purse (₹)</label>
+                <input type="number" value="400000" />
+            </div>
+        </div>
+        
+        <!-- Player Cards Grid -->
+        <div class="player-grid">
+            <div class="player-card">
+                <h4>Player 1</h4>
+                <p>Batter • Base: ₹30,000</p>
+            </div>
+            <div class="player-card">
+                <h4>Player 2</h4>
+                <p>Bowler • Base: ₹25,000</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSizeIndicator() {
+            const width = window.innerWidth;
+            document.getElementById('sizeIndicator').textContent = `${width}px wide`;
+        }
+        
+        updateSizeIndicator();
+        window.addEventListener('resize', updateSizeIndicator);
+    </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+{
+  "players": [
+    {
+       "id": "1",
+      "name": "Aravind",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Aravind",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+       "id": "2",
+      "name": "Vinoth",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Vinoth",
+      "stats": {
+        "matches": 10,
+        "runs": 30,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "3",
+      "name": "Selvam",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Selvam",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "4",
+      "name": "Sathish",
+      "role": "All-Rounder",
+      "basePrice": 35000,
+      "image": "https://placehold.co/160x160?text=Sathish",
+      "stats": {
+        "matches": 10,
+        "runs": 120,
+        "wickets": 15
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "5",
+      "name": "Raj",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Raj",
+      "stats": {
+        "matches": 3,
+        "runs": 30,
+        "wickets": 2
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "6",
+      "name": "Mathesh",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "https://placehold.co/160x160?text=Mathesh",
+      "stats": {
+        "matches": 10,
+        "runs": 10,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "7",
+      "name": "Aakash",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "https://placehold.co/160x160?text=Aakash",
+      "stats": {
+        "matches": 10,
+        "runs": 10,
+        "wickets": 0
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "8",
+      "name": "Anandh",
+      "role": "All-Rounder",
+      "basePrice": 30000,
+      "image": "https://placehold.co/160x160?text=Anandh",
+      "stats": {
+        "matches": 10,
+        "runs": 150,
+        "wickets": 21
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "9",
+      "name": "Saran",
+      "role": "All-Rounder",
+      "basePrice": 20000,
+      "image": "https://placehold.co/160x160?text=Saran",
+      "stats": {
+        "matches": 10,
+        "runs": 130,
+        "wickets": 13
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "10",
+      "name": "Barath",
+      "role": "All-Rounder",
+      "basePrice": 15000,
+      "image": "https://placehold.co/160x160?text=Barath",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 8
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "11",
+      "name": "Nandha",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Nandha",
+      "stats": {
+        "matches": 10,
+        "runs": 50,
+        "wickets": 5
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "12",
+      "name": "Giri",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Giri",
+      "stats": {
+        "matches": 10,
+        "runs": 50,
+        "wickets": 5
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "13",
+      "name": "Varathan",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Varathan",
+      "stats": {
+        "matches": 10,
+        "runs": 60,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "14",
+      "name": "Ravi",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "https://placehold.co/160x160?text=Ravi",
+      "stats": {
+        "matches": 10,
+        "runs": 10,
+        "wickets": 0
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+       "id": "15",
+      "name": "Arun",
+      "role": "All-Rounder",
+      "basePrice": 30000,
+      "image": "https://placehold.co/160x160?text=Arun",
+      "stats": {
+        "matches": 10,
+        "runs": 180,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "16",
+      "name": "Sivaram",
+      "role": "All-Rounder",
+      "basePrice": 35000,
+      "image": "https://placehold.co/160x160?text=Sivaram",
+      "stats": {
+        "matches": 10,
+        "runs": 120,
+        "wickets": 18
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "17",
+      "name": "Raj sekar",
+      "role": "All-Rounder",
+      "basePrice": 20000,
+      "image": "https://placehold.co/160x160?text=Raj+sekar",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "18",
+      "name": "Dass",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Dass",
+      "stats": {
+        "matches": 5,
+        "runs": 30,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "19",
+      "name": "Naveen",
+      "role": "All-Rounder",
+      "basePrice": 20000,
+      "image": "https://placehold.co/160x160?text=Naveen",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 15
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "20",
+      "name": "Ashwin",
+      "role": "All-Rounder",
+      "basePrice": 15000,
+      "image": "https://placehold.co/160x160?text=Ashwin",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "21",
+      "name": "Nethaji",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "https://placehold.co/160x160?text=Nethaji",
+      "stats": {
+        "matches": 5,
+        "runs": 30,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "22",
+      "name": "Kathir",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "https://placehold.co/160x160?text=kathir",
+      "stats": {
+        "matches": 5,
+        "runs": 30,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "23",
+      "name": "Kiruba",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "https://placehold.co/160x160?text=Kiruba",
+      "stats": {
+        "matches": 5,
+        "runs": 50,
+        "wickets": 5
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    }
+  ],
+  "teams": [
+    {
+      "id": "4",
+      "name": "CSK",
+      "purse": 400000,
+      "spent": 0
+    },
+    {
+      "id": "5",
+      "name": "MI",
+      "purse": 400000,
+      "spent": 0
+    },
+    {
+      "id": "6",
+      "name": "RCB",
+      "purse": 400000,
+      "spent": 0
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Teams Test - Mobile Layout</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: #0f172a; 
+            color: #e5e7eb;
+            padding-top: 120px;
+        }
+        
+        .size-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #22c55e;
+            color: #051306;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            z-index: 9999;
+        }
+        
+        /* Sticky Teams */
+        .sticky-teams {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            padding: 8px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #182535;
+        }
+        
+        .team-chip {
+            background: #0b1220;
+            border: 1px solid #182535;
+            border-radius: 999px;
+            padding: 8px 6px;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-height: 44px;
+            flex-direction: row;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .team-chip:hover {
+            border-color: #03aaf1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-chip.open {
+            outline: 2px solid #03aaf1;
+        }
+        
+        .team-chip__name {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+            color: #e5e7eb;
+        }
+        
+        .team-chip__purse {
+            display: none; /* Hidden on mobile */
+        }
+        
+        .team-chip__arrow {
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-left: 4px;
+            background: transparent;
+            border: none;
+            color: #e5e7eb;
+            cursor: pointer;
+        }
+        
+        .content {
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 480px) {
+            .team-chip {
+                padding: 6px 4px;
+                min-height: 42px;
+                gap: 3px;
+            }
+            
+            .team-chip__name {
+                font-size: 10px;
+            }
+            
+            .team-chip__arrow {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="size-indicator" id="sizeIndicator"></div>
+    
+    <!-- Sticky Teams Header -->
+    <div class="sticky-teams">
+        <div class="team-chip">
+            <div class="team-chip__name">CSK</div>
+            <div class="team-chip__purse">₹390,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip open">
+            <div class="team-chip__name">MI</div>
+            <div class="team-chip__purse">₹350,000 left</div>
+            <button class="team-chip__arrow">▾</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">RCB</div>
+            <div class="team-chip__purse">₹400,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">KKR</div>
+            <div class="team-chip__purse">₹375,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">DC</div>
+            <div class="team-chip__purse">₹320,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">PBKS</div>
+            <div class="team-chip__purse">₹410,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h2>Mobile Sticky Teams Test</h2>
+        <p>Under 500px, teams show only:</p>
+        <ul>
+            <li>✅ Team name</li>
+            <li>✅ Dropdown arrow</li>
+            <li>❌ Purse amount (hidden)</li>
+        </ul>
+        <p>Resize your browser to test different widths.</p>
+        
+        <div style="height: 100vh; background: #111827; margin-top: 20px; padding: 20px; border-radius: 8px;">
+            <h3>Scrollable Content</h3>
+            <p>Scroll to verify sticky teams stay fixed at the top.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateSizeIndicator() {
+            const width = window.innerWidth;
+            document.getElementById('sizeIndicator').textContent = `${width}px wide`;
+        }
+        
+        updateSizeIndicator();
+        window.addEventListener('resize', updateSizeIndicator);
+        
+        // Add click functionality to arrows
+        document.querySelectorAll('.team-chip__arrow').forEach(arrow => {
+            arrow.addEventListener('click', function() {
+                const chip = this.closest('.team-chip');
+                const isOpen = chip.classList.contains('open');
+                
+                // Close all chips
+                document.querySelectorAll('.team-chip').forEach(c => c.classList.remove('open'));
+                
+                // Toggle current chip
+                if (!isOpen) {
+                    chip.classList.add('open');
+                    this.textContent = '▾';
+                } else {
+                    this.textContent = '▸';
+                }
+                
+                // Reset other arrows
+                document.querySelectorAll('.team-chip__arrow').forEach(a => {
+                    if (a !== this) a.textContent = '▸';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

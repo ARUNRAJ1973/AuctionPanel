@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Mobile Layout Test - Under 500px</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #0f172a; 
+            color: #e5e7eb;
+        }
+        
+        .size-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #22c55e;
+            color: #051306;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            z-index: 9999;
+        }
+        
+        .test-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #111827;
+            padding: 16px;
+            border-radius: 12px;
+        }
+        
+        /* Panel styles */
+        .panel__header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .panel__title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .btn {
+            background: #1f2937;
+            color: #e5e7eb;
+            border: 1px solid #182535;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .btn.ghost {
+            background: transparent;
+            border: 1px solid #7f796d;
+        }
+        
+        .btn.amount {
+            background: #dd9807;
+            color: #001018;
+            font-weight: bold;
+        }
+        
+        .btn.circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Bid step buttons */
+        .bid-step-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 8px;
+            width: 100%;
+            justify-items: center;
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+        
+        .bid-step-buttons .btn {
+            width: 100%;
+            max-width: 120px;
+            font-size: 12px;
+            padding: 8px 4px;
+        }
+        
+        /* Main bid row */
+        .main-bid-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            gap: 16px;
+        }
+        
+        .bid {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-align: center;
+            margin: 0 16px;
+        }
+        
+        .btn-minus {
+            background-color: #601313;
+        }
+        
+        .btn-plus {
+            background-color: #11524f;
+        }
+        
+        /* Mobile specific */
+        @media (max-width: 500px) {
+            .panel__header-row {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            
+            .bid-step-buttons {
+                max-width: 300px !important;
+            }
+            
+            .main-bid-row {
+                justify-content: center !important;
+            }
+            
+            .bid {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .bid-step-buttons {
+                max-width: 280px !important;
+                gap: 6px !important;
+            }
+            
+            .bid-step-buttons .btn {
+                font-size: 11px !important;
+                padding: 6px 2px !important;
+            }
+            
+            .btn.circle {
+                width: 45px !important;
+                height: 45px !important;
+            }
+            
+            .bid {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="size-indicator" id="sizeIndicator"></div>
+    
+    <div class="test-container">
+        <h2 style="text-align: center; margin-bottom: 20px;">Auction Mobile Layout Test</h2>
+        
+        <!-- Auction Panel Header -->
+        <div class="panel__header-row">
+            <h2 class="panel__title">Auction</h2>
+            <button class="btn ghost">Back</button>
+        </div>
+        
+        <!-- Bid Step Buttons (2x2 Grid) -->
+        <div class="bid-step-buttons">
+            <button class="btn amount">+ ₹1k</button>
+            <button class="btn ghost">+ ₹3k</button>
+            <button class="btn ghost">+ ₹5k</button>
+            <button class="btn ghost">+ ₹10k</button>
+        </div>
+        
+        <!-- Main Bid Row (Centered) -->
+        <div class="main-bid-row">
+            <button class="btn circle btn-minus">-</button>
+            <div class="bid">₹50,000</div>
+            <button class="btn circle btn-plus">+</button>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center; color: #94a3b8; font-size: 14px;">
+            <p><strong>Under 500px Layout:</strong></p>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ Title and Back button in same row</li>
+                <li>✅ Bid buttons in 2x2 grid (1k, 3k, 5k, 10k)</li>
+                <li>✅ Price increment controls centered</li>
+            </ul>
+            
+            <p style="margin-top: 20px;">Resize browser to test different screen sizes</p>
+        </div>
+    </div>
+
+    <script>
+        function updateSizeIndicator() {
+            const width = window.innerWidth;
+            document.getElementById('sizeIndicator').textContent = `${width}px wide`;
+        }
+        
+        updateSizeIndicator();
+        window.addEventListener('resize', updateSizeIndicator);
+        
+        // Add interactive functionality to buttons
+        document.querySelectorAll('.bid-step-buttons .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.bid-step-buttons .btn').forEach(b => {
+                    b.classList.remove('amount');
+                    b.classList.add('ghost');
+                });
+                this.classList.remove('ghost');
+                this.classList.add('amount');
+            });
+        });
+        
+        let currentBid = 50000;
+        const bidDisplay = document.querySelector('.bid');
+        
+        document.querySelector('.btn-minus').addEventListener('click', function() {
+            currentBid = Math.max(10000, currentBid - 5000);
+            bidDisplay.textContent = `₹${currentBid.toLocaleString()}`;
+        });
+        
+        document.querySelector('.btn-plus').addEventListener('click', function() {
+            currentBid += 5000;
+            bidDisplay.textContent = `₹${currentBid.toLocaleString()}`;
+        });
+    </script>
+</body>
+</html>

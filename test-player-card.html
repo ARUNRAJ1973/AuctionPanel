@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Card Test - Under 500px</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #0f172a; 
+            color: #e5e7eb;
+        }
+        
+        .test-container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: #111827; 
+            padding: 16px; 
+            border-radius: 8px;
+        }
+        
+        .size-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #22c55e;
+            color: #051306;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            z-index: 9999;
+        }
+        
+        /* Player Card Styles */
+        .player-card {
+            background: #0b1220;
+            border: 1px solid #182535;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+            margin: 16px 0;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+        
+        .player-card__imgwrap {
+            aspect-ratio: 1 / 1 !important;
+            width: 100% !important;
+            height: auto !important;
+            overflow: hidden !important;
+            position: relative !important;
+            background: #050a14;
+        }
+        
+        .player-card__imgwrap img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+        }
+        
+        .player-card__body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .player-card__row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+        
+        .player-card__name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .player-card__role {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        
+        .player-card__stats {
+            color: #94a3b8;
+            font-size: 11px;
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        
+        .player-card__main-actions {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 4px !important;
+            width: 100% !important;
+            justify-content: space-between !important;
+        }
+        
+        .player-card__main-actions .btn {
+            flex: 1 !important;
+            min-width: 0 !important;
+            width: auto !important;
+            font-size: 9px !important;
+            padding: 8px 2px !important;
+            background: #1f2937;
+            color: #e5e7eb;
+            border: 1px solid #182535;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        
+        .btn.success { background: #22c55e; color: #051306; }
+        .btn.danger { background: #ef4444; color: #2a0707; }
+        .btn.outline { background: transparent; border-color: #ef4444; color: #ef4444; }
+        
+        @media (max-width: 400px) {
+            .player-card__main-actions .btn {
+                font-size: 8px !important;
+                padding: 6px 1px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="size-indicator" id="sizeIndicator"></div>
+    
+    <div class="test-container">
+        <h2>Player Card Test - Responsive Under 500px</h2>
+        <p>Resize your browser to test different widths</p>
+        
+        <!-- Test Player Card 1 -->
+        <div class="player-card">
+            <div class="player-card__imgwrap">
+                <img src="https://placehold.co/200x200/3b82f6/ffffff?text=Player+1" alt="Player 1" />
+            </div>
+            <div class="player-card__body">
+                <div class="player-card__row">
+                    <div class="player-card__name">Virat Kohli</div>
+                    <div class="player-card__role">Batter</div>
+                </div>
+                <div class="player-card__stats">
+                    <span>Base: ₹50,000</span>
+                    <span>| Matches: 25</span>
+                    <span>| Runs: 1,250</span>
+                    <span>| Wkts: 2</span>
+                </div>
+                <div class="player-card__main-actions">
+                    <button class="btn success">Auction</button>
+                    <button class="btn">Edit</button>
+                    <button class="btn danger outline">Delete</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test Player Card 2 -->
+        <div class="player-card">
+            <div class="player-card__imgwrap">
+                <img src="https://placehold.co/200x200/22c55e/ffffff?text=Player+2" alt="Player 2" />
+            </div>
+            <div class="player-card__body">
+                <div class="player-card__row">
+                    <div class="player-card__name">Jasprit Bumrah</div>
+                    <div class="player-card__role">Bowler</div>
+                </div>
+                <div class="player-card__stats">
+                    <span>Base: ₹75,000</span>
+                    <span>| Matches: 30</span>
+                    <span>| Runs: 150</span>
+                    <span>| Wkts: 45</span>
+                </div>
+                <div class="player-card__main-actions">
+                    <button class="btn success">Auction</button>
+                    <button class="btn">Edit</button>
+                    <button class="btn danger outline">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSizeIndicator() {
+            const width = window.innerWidth;
+            document.getElementById('sizeIndicator').textContent = `${width}px wide`;
+        }
+        
+        updateSizeIndicator();
+        window.addEventListener('resize', updateSizeIndicator);
+    </script>
+</body>
+</html>

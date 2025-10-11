@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Teams Container Spacing Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: #0f172a; 
+            color: #e5e7eb;
+            padding-top: 160px;
+        }
+        
+        .size-indicator {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: #22c55e;
+            color: #051306;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            z-index: 9999;
+        }
+        
+        /* Main header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #182535;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #03aaf1;
+        }
+        
+        /* Sticky Teams with Container Spacing */
+        .sticky-teams {
+            position: fixed;
+            top: 50px;
+            left: 8px;
+            right: 8px;
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            padding: 8px 12px 12px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #182535;
+            max-width: calc(100% - 16px);
+            margin: 0 auto;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-chip {
+            background: #0b1220;
+            border: 1px solid #182535;
+            border-radius: 999px;
+            padding: 8px 6px;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-height: 44px;
+            flex-direction: row;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .team-chip:hover {
+            border-color: #03aaf1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-chip.open {
+            outline: 2px solid #03aaf1;
+        }
+        
+        .team-chip__name {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+            color: #e5e7eb;
+        }
+        
+        .team-chip__purse {
+            display: none; /* Hidden on mobile */
+        }
+        
+        .team-chip__arrow {
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-left: 4px;
+            background: transparent;
+            border: none;
+            color: #e5e7eb;
+            cursor: pointer;
+        }
+        
+        .content {
+            padding: 8px;
+            max-width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        
+        .content-card {
+            background: #111827;
+            border: 1px solid #182535;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .spacing-demo {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px dashed #22c55e;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 16px 0;
+        }
+        
+        @media (max-width: 480px) {
+            .sticky-teams {
+                left: 6px;
+                right: 6px;
+                gap: 3px;
+                padding: 6px 10px 10px;
+                max-width: calc(100% - 12px);
+                border-radius: 0 0 6px 6px;
+            }
+            
+            .team-chip__name {
+                font-size: 10px;
+            }
+            
+            .team-chip__arrow {
+                font-size: 11px;
+            }
+            
+            .content {
+                padding: 6px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .team-chip {
+                padding: 6px 4px;
+                min-height: 42px;
+                gap: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="size-indicator" id="sizeIndicator"></div>
+    
+    <!-- Main Header -->
+    <div class="sticky-header">
+        KPL Auction
+    </div>
+    
+    <!-- Sticky Teams with Container Spacing -->
+    <div class="sticky-teams">
+        <div class="team-chip">
+            <div class="team-chip__name">CSK</div>
+            <div class="team-chip__purse">₹390,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip open">
+            <div class="team-chip__name">MI</div>
+            <div class="team-chip__purse">₹350,000 left</div>
+            <button class="team-chip__arrow">▾</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">RCB</div>
+            <div class="team-chip__purse">₹400,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">KKR</div>
+            <div class="team-chip__purse">₹375,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">DC</div>
+            <div class="team-chip__purse">₹320,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+        <div class="team-chip">
+            <div class="team-chip__name">PBKS</div>
+            <div class="team-chip__purse">₹410,000 left</div>
+            <button class="team-chip__arrow">▸</button>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="content-card">
+            <h2>Sticky Teams Container Spacing Test</h2>
+            <p>The sticky teams now have proper container spacing:</p>
+            
+            <div class="spacing-demo">
+                <strong>✅ Container Margins Applied</strong>
+                <br>
+                Under 500px: 8px left/right margins<br>
+                Under 480px: 6px left/right margins
+            </div>
+            
+            <ul style="text-align: left;">
+                <li><strong>Left/Right Margins:</strong> Teams don't touch screen edges</li>
+                <li><strong>Rounded Bottom Corners:</strong> Better visual integration</li>
+                <li><strong>Box Shadow:</strong> Enhanced depth and separation</li>
+                <li><strong>Proper Padding:</strong> Teams have breathing room inside container</li>
+                <li><strong>Responsive Sizing:</strong> Margins scale with screen size</li>
+            </ul>
+            
+            <h3>Screen Size Breakdown:</h3>
+            <div style="background: #0b1220; padding: 12px; border-radius: 6px; font-size: 14px;">
+                <div><strong>500px and under:</strong> 8px margins, 8px padding</div>
+                <div><strong>480px and under:</strong> 6px margins, 6px padding</div>
+                <div><strong>400px and under:</strong> Same margins, tighter team spacing</div>
+            </div>
+        </div>
+        
+        <div class="content-card">
+            <h3>Main Content Area</h3>
+            <p>This content scrolls normally while sticky teams stay fixed at the top with proper container spacing.</p>
+            <p>Notice how the content also respects the same margin structure, creating visual consistency throughout the app.</p>
+        </div>
+        
+        <div style="height: 100vh; background: #0b1220; margin-top: 20px; padding: 20px; border-radius: 8px;">
+            <h3>Tall Content for Scroll Testing</h3>
+            <p>Scroll down to verify that sticky teams remain properly positioned with margins.</p>
+            <p>The teams should never touch the edges of the screen, maintaining a clean, contained appearance.</p>
+            
+            <div style="margin-top: 50px; padding: 20px; background: rgba(3, 170, 241, 0.1); border-radius: 8px;">
+                <p><strong>Perfect!</strong> The sticky teams now have a professional, contained look that matches the rest of your app's design system.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSizeIndicator() {
+            const width = window.innerWidth;
+            document.getElementById('sizeIndicator').textContent = `${width}px wide`;
+        }
+        
+        updateSizeIndicator();
+        window.addEventListener('resize', updateSizeIndicator);
+        
+        // Add interactive functionality to team chips
+        document.querySelectorAll('.team-chip__arrow').forEach(arrow => {
+            arrow.addEventListener('click', function() {
+                const chip = this.closest('.team-chip');
+                const isOpen = chip.classList.contains('open');
+                
+                // Close all chips
+                document.querySelectorAll('.team-chip').forEach(c => c.classList.remove('open'));
+                
+                // Toggle current chip
+                if (!isOpen) {
+                    chip.classList.add('open');
+                    this.textContent = '▾';
+                } else {
+                    this.textContent = '▸';
+                }
+                
+                // Reset other arrows
+                document.querySelectorAll('.team-chip__arrow').forEach(a => {
+                    if (a !== this) a.textContent = '▸';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
