@@ -13,7 +13,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "json-server --watch db.json --host 0.0.0.0 --port $PORT",
+    "start": "npx json-server --watch db.json --host 0.0.0.0 --port $PORT",
     "build": "echo 'No build required for JSON Server'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -38,7 +38,7 @@
       "last 1 safari version"
     ]
   },
-    "devDependencies": {
+  "devDependencies": {
     "concurrently": "^9.2.1",
     "json-server": "^1.0.0-beta.3"
   }
