@@ -6,16 +6,20 @@ const CURRENT_USER_KEY = 'kpl_auction_current_user';
 const ADMIN_EMAIL = 'kplauction123@gmail.com';
 const ADMIN_PASSWORD = 'kplauction@123';
 
+// Default regular user credentials
+const USER_EMAIL = 'kpl@gmail.com';
+const USER_PASSWORD = 'kpl@123';
+
 class UserService {
   constructor() {
-    this.initializeAdmin();
+    this.initializeDefaults();
   }
 
-  // Initialize default admin user
-  initializeAdmin() {
+  // Initialize default admin and a sample user account
+  initializeDefaults() {
     const users = this.getUsers();
+
     const adminExists = users.find(user => user.email === ADMIN_EMAIL);
-    
     if (!adminExists) {
       const adminUser = {
         id: 'admin-001',
@@ -26,8 +30,22 @@ class UserService {
         createdAt: new Date().toISOString()
       };
       users.push(adminUser);
-      this.saveUsers(users);
     }
+
+    const sampleUserExists = users.find(user => user.email === USER_EMAIL);
+    if (!sampleUserExists) {
+      const sampleUser = {
+        id: 'user-001',
+        email: USER_EMAIL,
+        password: USER_PASSWORD,
+        role: 'user',
+        name: 'User',
+        createdAt: new Date().toISOString(),
+      };
+      users.push(sampleUser);
+    }
+
+    this.saveUsers(users);
   }
 
   // Get all users from localStorage

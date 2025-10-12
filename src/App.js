@@ -89,7 +89,7 @@ const AuctionPage = ({ playerId }) => {
             <img src="https://media.giphy.com/media/26u4lOMA8JKSnL9Uk/giphy.gif" alt="success" className="overlay__gif" />
             <h3>Sold successfully to {teamById(soldInfo.teamId)?.name}!</h3>
             <div className="inline-form" style={{ justifyContent: 'center', gap: 12 }}>
-              <button className="btn" onClick={() => { undoSale(soldInfo.playerId); setSoldInfo(null); selectPlayer(soldInfo.playerId); }}>Undo</button>
+              <button className="btn" style={{backgroundColor:'#b34747'}} onClick={() => { undoSale(soldInfo.playerId); setSoldInfo(null); selectPlayer(soldInfo.playerId); }}>Undo</button>
               <button className="btn primary" onClick={() => { window.location.hash = '#/'; }}>Go to main page</button>
             </div>
           </div>
@@ -104,6 +104,20 @@ const AuctionPage = ({ playerId }) => {
     const route = parts[0] || '';
     const id = parts[1];
     const { isAuthenticated, showWelcome, completeWelcome, loading, user, isAdmin } = useAuth();
+
+    // Apply viewer-only theme class on body without changing UI layout
+    useEffect(() => {
+      const cls = 'theme-viewer';
+      const isAdminRole = isAdmin();
+      if (!isAdminRole) {
+        document.body.classList.add(cls);
+      } else {
+        document.body.classList.remove(cls);
+      }
+      return () => {
+        document.body.classList.remove(cls);
+      };
+    }, [isAdmin, user]);
 
     if (loading) {
       return (

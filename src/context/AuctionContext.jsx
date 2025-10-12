@@ -28,6 +28,7 @@ export const AuctionProvider = ({ children }) => {
           teamsApi.getAll(),
         ]);
         
+        console.log('✅ Data loaded successfully:', playersData);
         console.log('✅ Data loaded successfully:', { 
           players: playersData.length, 
           teams: teamsData.length 
@@ -343,7 +344,7 @@ export const AuctionProvider = ({ children }) => {
           justifyContent: 'center', 
           alignItems: 'center', 
           height: '50vh',
-          color: 'var(--text)',
+          color: "#000",
           fontSize: '18px'
         }}>
           Loading auction data...

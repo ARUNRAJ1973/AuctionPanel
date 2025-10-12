@@ -36,7 +36,7 @@ const AddPlayer = () => {
   };
 
   return (
-    <section className="panel" style={{ marginTop: 12 }}>
+    <section className="panel" style={{ marginTop: 12 ,backgroundColor:'#e7dbc6'}}>
       <h2 className="panel__title">Add Player</h2>
       <form className="inline-form add-player-form" onSubmit={onSubmit} style={{ flexWrap: 'wrap', gap: 8 }}>
         <input 
@@ -103,7 +103,7 @@ const AddPlayer = () => {
           style={{ minHeight: '44px', fontSize: '16px', cursor: 'pointer' }}
         />
         <input ref={fileRef} type="file" accept="image/*" onChange={onPickImage} style={{ display: 'none' }} />
-        <button className="btn primary" type="submit" style={{ minHeight: '44px' }}>Add</button>
+        <button className="btn primary" type="submit" style={{ minHeight: '44px' ,width:'100%'}}>Add</button>
       </form>
     </section>
   );

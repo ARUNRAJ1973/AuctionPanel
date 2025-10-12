@@ -782,7 +782,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #ef4444;
+  background: #510707;
   color: white;
   border: none;
   padding: 0.6rem 1rem;
@@ -825,6 +825,7 @@
 
 .sticky-teams {
   display: flex !important;
+  justify-content: space-around;
   gap: 1rem !important;
   flex-wrap: wrap !important;
   align-items: center !important;
@@ -941,8 +942,8 @@
 }
 
 .dashboard-header p {
-  font-size: 1.1rem;
-  color: #9fa4b0;
+  font-size: 15px;
+  color: #ffffff;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -969,10 +970,18 @@
     margin-bottom: 1.5rem;
   }
 }
+@media (max-width: 420px) {
+  .dashboard-stats {
+    font-size: 15px !important;
+  }
+  .stat-label {
+    font-size: 10px !important;
+  }
+}
 
 .stat-card {
   background: #fff;
-  padding: 2rem;
+  padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   text-align: center;
@@ -988,13 +997,13 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #667eea;
+  color: #243dae;
   margin-bottom: 0.5rem;
 }
 
 .stat-label {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #0d1627;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1194,7 +1203,7 @@
   padding: 0.6rem 0.8rem;
   background: #f8fafc;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #a2b0cc;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -1681,10 +1690,11 @@
 .viewer-available-player-stats {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: space-evenly;
   gap: 1px;
   margin-bottom: 1rem;
   padding: 5px;
-  background: #f8fafc;
+  background: #e6f1f8;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   overflow-x: auto;
@@ -1704,8 +1714,8 @@
 
 .viewer-available-player-price {
   font-weight: 700;
-  color: #059669;
-  background: #f0fdf4;
+  color: #fffb00;
+  background: #09675c;
   padding: 0.5rem;
   border-radius: 6px;
   text-align: center;
@@ -1766,14 +1776,9 @@
   
   .viewer-container {
     padding-top: 80px;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
-}
-
-/* Player Auction Spinner Styles */
-.auction-spinner {
-  margin-top: 1rem;
 }
 
 .spinner-stats {
@@ -1784,7 +1789,7 @@
 }
 
 .unsold-count {
-  background: var(--brand);
+  background: var(--accent);
   color: white;
   padding: 0.3rem 0.6rem;
   border-radius: 12px;
@@ -1803,7 +1808,7 @@
   position: relative;
   margin: 1.5rem 0;
   padding: 1rem;
-  background: var(--panel);
+  background: #e7dbc6;
   border: 2px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
@@ -1956,8 +1961,8 @@
 }
 
 .loading-dots span {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--brand);
   animation: dot-bounce 1.4s ease-in-out infinite both;
@@ -2053,6 +2058,9 @@
     padding: 0.8rem;
     margin: 1rem 0;
   }
+  .viewer-available-player-stats span {
+  font-size:15px !important;
+}
   
   .player-roulette {
     flex-direction: column;
@@ -2206,8 +2214,8 @@
   }
   
   .loading-dots span {
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
   }
 }
 

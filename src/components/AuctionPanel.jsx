@@ -79,16 +79,16 @@ const AuctionPanel = ({ onSold }) => {
         <>
           <div className="bid-row bid-step-row">
             <div className="inline-form bid-step-buttons" style={{ gap: 6 }}>
-              <button className={`btn small ${bidStep===1000? 'amount': 'ghost'}`} onClick={() => setBidStep(1000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹1k</button>
-              <button className={`btn small ${bidStep===3000? 'amount': 'ghost'}`} onClick={() => setBidStep(3000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹3k</button>
-              <button className={`btn small ${bidStep===5000? 'amount': 'ghost'}`} onClick={() => setBidStep(5000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹5k</button>
-              <button className={`btn small ${bidStep===10000? 'amount': 'ghost'}`} onClick={() => setBidStep(10000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹10k</button>
+              <button className={`btn small ${bidStep===1000? 'amount': 'ghost'}`} onClick={() => setBidStep(1000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹1000</button>
+              <button className={`btn small ${bidStep===3000? 'amount': 'ghost'}`} onClick={() => setBidStep(3000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹3000</button>
+              <button className={`btn small ${bidStep===5000? 'amount': 'ghost'}`} onClick={() => setBidStep(5000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹5000</button>
+              <button className={`btn small ${bidStep===10000? 'amount': 'ghost'}`} onClick={() => setBidStep(10000)} type="button" style={{ minHeight: '40px', fontSize: '14px' }}>+ ₹10,000</button>
             </div>
           </div>
           <div className="bid-row main-bid-row">
-            <button className="btn circle" style={{backgroundColor:'#601313', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => decrementBid()}>-</button>
+            <button className="btn circle" style={{backgroundColor:'#d8ca02ff',color:'#fff', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => decrementBid()}>-</button>
             <div className="bid">₹{(currentBid ?? basePrice).toLocaleString()}</div>
-            <button className="btn circle" style={{backgroundColor:'#11524f', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => incrementBid()}>+</button>
+            <button className="btn circle" style={{backgroundColor:'#d8ca02ff',color:'#fff', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => incrementBid()}>+</button>
           </div>
 
           <div className="team-selection">
@@ -125,7 +125,7 @@ const AuctionPanel = ({ onSold }) => {
               className="btn success sell-button" 
               disabled={disabledSell} 
               onClick={onSell}
-              style={{ minHeight: '50px', fontSize: '16px', fontWeight: 'bold' }}
+              style={{ minHeight: '50px', fontSize: '16px', fontWeight: 'bold',backgroundColor:'#d8ca02ff' }}
             >
               Sell to {teamId ? teamById(Number(teamId))?.name : 'Selected Team'}
             </button>

@@ -45,15 +45,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = (email, password, name) => {
-    try {
-      const newUser = userService.registerUser(email, password, name);
-      return { success: true, user: newUser };
-    } catch (error) {
-      return { success: false, error: error.message };
-    }
-  };
-
   const logout = () => {
     userService.logoutUser();
     setIsAuthenticated(false);
@@ -79,7 +70,6 @@ export const AuthProvider = ({ children }) => {
     user,
     loading,
     login,
-    register,
     logout,
     completeWelcome,
     isAdmin,

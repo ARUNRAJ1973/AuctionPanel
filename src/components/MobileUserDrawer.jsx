@@ -88,7 +88,11 @@ const MobileUserDrawer = () => {
           <div className="mobile-drawer__actions">
             <button 
               className="mobile-logout-btn"
-              onClick={handleLogout}
+               onClick={() => {
+                if (window.confirm('Are you sure you want to delete this item?')) {
+                  handleLogout();
+                }
+              }}
             >
               <span className="mobile-logout-icon">🚪</span>
               <span>Logout</span>

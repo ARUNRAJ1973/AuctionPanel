@@ -20,7 +20,7 @@ if (teams.length >= 7) return;
   };
 
   return (
-    <section className="panel">
+    <section className="panel" style={{backgroundColor:'#e7dbc6'}}>
       <div className="panel__header-row team-manager-header" style={{marginBottom: 12}}>
         <h2 className="panel__title">Teams owners</h2>
         <div className="col team-purse-input" style={{ alignItems: 'flex-end' }}>
@@ -58,12 +58,13 @@ if (teams.length >= 7) return;
                       className="btn primary" 
                       onClick={() => { renameTeam(t.id, editingName); setEditingId(null); }}
                       disabled={!editingName.trim()}
+                    style={{backgroundColor:'#fffcdb',border:'1px solid #f0e65b'}}
                     >
                       Save
                     </button>
                     <button 
                       className="btn ghost" 
-                      style={{backgroundColor:'#405167'}}
+                      style={{backgroundColor:'#f0e65b'}}
                       onClick={() => setEditingId(null)}
                     >
                       Cancel
@@ -82,17 +83,17 @@ if (teams.length >= 7) return;
                 <>
                   <div className="team-info" style={{display:'flex',flexDirection:'column'}}>
                     <strong>{t.name}</strong>
-                    <div className="muted"> • Spent ₹{t.spent.toLocaleString()}</div>
-                    <div className="muted"> • Remaining ₹{remaining.toLocaleString()}</div>
+                    <div className="muted" style={{fontSize:15 , fontWeight:'bold'}}> • Spent ₹{t.spent.toLocaleString()}</div>
+                    <div className="muted" style={{fontSize:15 , fontWeight:'bold'}}> • Remaining ₹{remaining.toLocaleString()}</div>
                   </div>
                   <div className="inline-form team-actions">
-                    <button className="btn" style={{backgroundColor:'#405167', minHeight: '44px'}}  onClick={() => { setEditingId(t.id); setEditingName(t.name); }}>Edit</button>
+                    <button className="btn" style={{backgroundColor:'#f0e65b', minHeight: '44px',fontWeight:'bold',color:'#000'}}  onClick={() => { setEditingId(t.id); setEditingName(t.name); }}>Edit</button>
                     <button
                       className="btn danger outline"
                       onClick={() => canDelete && removeTeam(t.id)}
                       disabled={!canDelete}
                       title={canDelete ? "Remove team" : "Cannot remove: team has sold players"}
-                      style={{minHeight: '44px'}}
+                      style={{minHeight: '44px',fontWeight:'bold'}}
                     >
                       Delete
                     </button>

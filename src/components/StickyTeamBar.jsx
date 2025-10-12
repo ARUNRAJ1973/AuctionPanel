@@ -34,7 +34,13 @@ const StickyTeamBar = ({ enableDetails = false }) => {
             <span className="user-name">Hello, {user?.name || 'User'}</span>
             <span className="user-role">{isAdmin() ? '👑 Admin' : '👤 Viewer'}</span>
           </div>
-          <button className="header-logout-btn" onClick={logout} title="Logout">
+          <button className="header-logout-btn" 
+          onClick={() => {
+          if (window.confirm('Are you sure you want to delete this item?')) {
+            logout();
+          }
+        }}
+          title="Logout">
             <span className="logout-icon">🚪</span>
             <span className="logout-text">Logout</span>
           </button>
@@ -73,8 +79,8 @@ const StickyTeamBar = ({ enableDetails = false }) => {
             return (
               <div>
                 <div className="sticky-details__header">
-                  <span style={{fontSize:25}}>{t.name}</span>
-                  <span className="muted" style={{fontSize:20 , color:'#03aaf1'}}> • Remaining ₹{remaining.toLocaleString()}</span>
+                  <span style={{fontSize:25 ,color:'#fe0101ff',fontWeight:'bold' }}>{t.name}</span>
+                  <span className="muted" style={{fontSize:22 , color:'#fe0101ff',fontWeight:'bold'}}> {"-->"} Remaining ₹{remaining.toLocaleString()}</span>
                 </div>
                 {list.length === 0 ? (
                   <div className="empty">No players bought yet</div>
@@ -84,10 +90,10 @@ const StickyTeamBar = ({ enableDetails = false }) => {
                       <li key={i.id} className="list__item list__item--space-between sticky-details__item">
                         <span className="player-row">
                           <img src={i.image} alt={i.name} />
-                          <span>{i.name}</span>
+                          <span style={{fontSize:20 ,color:'#000000ff',fontWeight:'bold' }}>{i.name}</span>
                         </span>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span>₹{i.price.toLocaleString()}</span>
+                          <span style={{fontSize:20 ,color:'#000000ff',fontWeight:'bold' }}>₹{i.price.toLocaleString()}</span>
                         </span>
                       </li>
                     ))}

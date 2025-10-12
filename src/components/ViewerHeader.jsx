@@ -15,7 +15,12 @@ const ViewerHeader = () => {
           <span className="user-name">Hello, {user?.name || 'User'}</span>
           <span className="user-role">{isAdmin() ? '👑 Admin' : '👤 Viewer'}</span>
         </div>
-        <button className="header-logout-btn" onClick={logout} title="Logout">
+        <button className="header-logout-btn" 
+         onClick={() => {
+          if (window.confirm('Are you sure you want to delete this item?')) {
+            logout();
+          }
+        }} title="Logout">
           <span className="logout-icon">🚪</span>
           <span className="logout-text">Logout</span>
         </button>

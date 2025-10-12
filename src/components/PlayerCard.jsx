@@ -1,9 +1,37 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useAuction } from "../context/AuctionContext";
 
 const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
   const { updatePlayer, undoSale, teamById } = useAuction();
   const { id, name, role, basePrice, image, stats, sold, soldTo, soldPrice } = player;
+
+
+  console.log("player.....".name);
+  console.log("player.....".image);
+  
+  // Robust image source with fallbacks for common extensions and patterns
+  const normalizedName = useMemo(() => String(name || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-'), [name]);
+  const candidateImages = useMemo(() => {
+    const base = `/images/${id}`;
+    const byName = `/images/${normalizedName}`;
+    const compactName = `/images/${String(name || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '')}`; // e.g., "rajsekar"
+    const list = [];
+    // Prefer explicit image from DB first
+    if (image) list.push(image);
+    // Try common extensions by id
+    [".jpg", ".jpeg", ".png", ".webp"].forEach(ext => list.push(base + ext));
+    // Try by normalized name (dashes)
+    [".jpg", ".jpeg", ".png", ".webp"].forEach(ext => list.push(byName + ext));
+    // Try compact name (no separators), to support files like rajsekar.jpeg
+    [".jpg", ".jpeg", ".png", ".webp"].forEach(ext => list.push(compactName + ext));
+    // Final placeholder
+    list.push(`https://placehold.co/160x160?text=${encodeURIComponent(name || 'Player')}`);
+    // De-duplicate
+    return [...new Set(list)];
+  }, [id, image, normalizedName, name]);
+
+  const [imgIndex, setImgIndex] = useState(0);
+  const imgSrc = candidateImages[Math.min(imgIndex, candidateImages.length - 1)];
 
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({
@@ -23,7 +51,17 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
     if (file) {
       const url = URL.createObjectURL(file);
       setForm(prev => ({ ...prev, image: url }));
+      setImgIndex(0); // reset to new chosen image
     }
+  };
+
+  // If DB image changes (e.g., after update), reset index
+  useEffect(() => {
+    setImgIndex(0);
+  }, [image]);
+
+  const onImgError = () => {
+    setImgIndex((i) => Math.min(i + 1, candidateImages.length - 1));
   };
 
   const onSave = () => {
@@ -44,7 +82,8 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
   return (
     <div className={`player-card ${isSelected ? "selected" : ""}`}>
       <div className="player-card__imgwrap">
-        <img src={form.image || image} alt={name} />
+        <img src={candidateImages[0]} alt={name} />
+        {/* <img src={form.image || imgSrc} onError={onImgError} alt={name} /> */}
         {sold && <span className="badge badge--sold">SOLD</span>}
       </div>
       <div className="player-card__body">
@@ -149,11 +188,8 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
               <div className="player-card__name">{name}</div>
               <div className="player-card__role">{role}</div>
             </div>
-            <div className="player-card__stats">
+            <div className="base-price" style={{color:"#fff564",backgroundColor:'#37a28b',border:'1px solid black',fontWeight:'bold',borderRadius:8,textAlign:'center',paddingTop:5,paddingBottom:5}}>
               <span>Base: ₹{basePrice.toLocaleString()}</span>
-              <span>| Matches: {stats.matches}</span>
-              <span>| Runs: {stats.runs}</span>
-              <span>| Wkts: {stats.wickets}</span>
             </div>
             {sold ? (
                 <div className="player-card__sold">
@@ -170,16 +206,22 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
                       }
                     }}
                     title="Undo this sale"
-                    style={{ minHeight: '40px' }}
+                    style={{ minHeight: '40px',backgroundColor:'#b34747' }}
                   >
                     Undo Sale
                   </button>
                 </div>
             ) : (
               <div className="player-card__actions player-card__main-actions" style={{justifyContent:'space-evenly', gap: '4px'}}>
-                <button className="btn small success" onClick={() => onAuction(id)} style={{ minHeight: '40px', flex: '1' }}>Auction</button>
-                <button className="btn small" style={{backgroundColor:'#405167', minHeight: '40px', flex: '1'}} onClick={() => setEditing(true)}>Edit</button>
-                <button className="btn small danger outline" onClick={() => onDelete(id)} style={{ minHeight: '40px', flex: '1' }}>Delete</button>
+                <button className="btn small success" onClick={() => onAuction(id)} style={{ minHeight: '40px', flex: '1',backgroundColor:'#f0e65b',color:'#000',fontWeight:'bold' }}>Auction</button>
+                <button className="btn small" style={{backgroundColor:'#fffcdb',border:'1px solid green', minHeight: '40px', flex: '1',color:'#b34747',fontWeight:'bold'}} onClick={() => setEditing(true)}>Edit</button>
+                <button className="btn small danger outline" 
+                onClick={() => {
+                if (window.confirm('Are you sure you want to delete this item?')) {
+                  onDelete(id);
+                }
+              }}
+                style={{ minHeight: '40px', flex: '1',backgroundColor:'#b34747',fontWeight:'bold' }}>Delete</button>
               </div>
             )}
           </>

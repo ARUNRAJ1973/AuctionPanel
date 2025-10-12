@@ -5,7 +5,7 @@
       "name": "Aravind",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Aravind",
+      "image": "/images/1.jpeg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -20,7 +20,7 @@
       "name": "Vinoth",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Vinoth",
+      "image": "/images/2.jpeg",
       "stats": {
         "matches": 10,
         "runs": 30,
@@ -35,7 +35,7 @@
       "name": "Selvam",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Selvam",
+      "image": "/images/3.jpeg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -50,7 +50,7 @@
       "name": "Sathish",
       "role": "All-Rounder",
       "basePrice": 35000,
-      "image": "https://placehold.co/160x160?text=Sathish",
+      "image": "/images/4.jpeg",
       "stats": {
         "matches": 10,
         "runs": 120,
@@ -65,7 +65,7 @@
       "name": "Raj",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Raj",
+      "image": "/images/5.jpeg",
       "stats": {
         "matches": 3,
         "runs": 30,
@@ -80,7 +80,7 @@
       "name": "Mathesh",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "https://placehold.co/160x160?text=Mathesh",
+      "image": "/images/6.jpeg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -95,7 +95,7 @@
       "name": "Aakash",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "https://placehold.co/160x160?text=Aakash",
+      "image": "/images/7.jpeg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -110,7 +110,7 @@
       "name": "Anandh",
       "role": "All-Rounder",
       "basePrice": 30000,
-      "image": "https://placehold.co/160x160?text=Anandh",
+      "image": "/images/8.jpeg",
       "stats": {
         "matches": 10,
         "runs": 150,
@@ -125,7 +125,7 @@
       "name": "Saran",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "https://placehold.co/160x160?text=Saran",
+      "image": "/images/9.jpeg",
       "stats": {
         "matches": 10,
         "runs": 130,
@@ -140,7 +140,7 @@
       "name": "Barath",
       "role": "All-Rounder",
       "basePrice": 15000,
-      "image": "https://placehold.co/160x160?text=Barath",
+      "image": "/images/10.jpeg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -155,7 +155,7 @@
       "name": "Nandha",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Nandha",
+      "image": "/images/11.jpeg",
       "stats": {
         "matches": 10,
         "runs": 50,
@@ -170,7 +170,7 @@
       "name": "Giri",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Giri",
+      "image": "/images/12.jpeg",
       "stats": {
         "matches": 10,
         "runs": 50,
@@ -185,7 +185,7 @@
       "name": "Varathan",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Varathan",
+      "image": "/images/13.jpeg",
       "stats": {
         "matches": 10,
         "runs": 60,
@@ -200,7 +200,7 @@
       "name": "Ravi",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "https://placehold.co/160x160?text=Ravi",
+      "image": "/images/14.jpeg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -215,7 +215,7 @@
       "name": "Arun",
       "role": "All-Rounder",
       "basePrice": 30000,
-      "image": "https://placehold.co/160x160?text=Arun",
+      "image": "/images/15.jpeg",
       "stats": {
         "matches": 10,
         "runs": 180,
@@ -230,7 +230,7 @@
       "name": "Sivaram",
       "role": "All-Rounder",
       "basePrice": 35000,
-      "image": "https://placehold.co/160x160?text=Sivaram",
+      "image": "/images/16.jpeg",
       "stats": {
         "matches": 10,
         "runs": 120,
@@ -245,7 +245,7 @@
       "name": "Raj sekar",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "https://placehold.co/160x160?text=Raj+sekar",
+      "image": "/images/17.jpeg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -260,7 +260,7 @@
       "name": "Dass",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Dass",
+      "image": "/images/18.jpeg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -275,7 +275,7 @@
       "name": "Naveen",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "https://placehold.co/160x160?text=Naveen",
+      "image": "/images/19.jpeg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -290,7 +290,7 @@
       "name": "Ashwin",
       "role": "All-Rounder",
       "basePrice": 15000,
-      "image": "https://placehold.co/160x160?text=Ashwin",
+      "image": "/images/20.jpeg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -305,7 +305,7 @@
       "name": "Nethaji",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "https://placehold.co/160x160?text=Nethaji",
+      "image": "/images/21.jpeg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -320,7 +320,7 @@
       "name": "Kathir",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "https://placehold.co/160x160?text=kathir",
+      "image": "/images/22.jpeg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -335,7 +335,7 @@
       "name": "Kiruba",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Kiruba",
+      "image": "/images/23.jpeg",
       "stats": {
         "matches": 5,
         "runs": 50,
