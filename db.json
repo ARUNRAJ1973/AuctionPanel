@@ -5,7 +5,7 @@
       "name": "Aravind",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/1.jpeg",
+      "image": "/images/1.jpg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -20,7 +20,7 @@
       "name": "Vinoth",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/2.jpeg",
+      "image": "/images/2.jpg",
       "stats": {
         "matches": 10,
         "runs": 30,
@@ -35,7 +35,7 @@
       "name": "Selvam",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/3.jpeg",
+      "image": "/images/3.jpg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -50,7 +50,7 @@
       "name": "Sathish",
       "role": "All-Rounder",
       "basePrice": 35000,
-      "image": "/images/4.jpeg",
+      "image": "/images/4.jpg",
       "stats": {
         "matches": 10,
         "runs": 120,
@@ -65,7 +65,7 @@
       "name": "Raj",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/5.jpeg",
+      "image": "/images/5.jpg",
       "stats": {
         "matches": 3,
         "runs": 30,
@@ -80,7 +80,7 @@
       "name": "Mathesh",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "/images/6.jpeg",
+      "image": "/images/6.jpg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -95,7 +95,7 @@
       "name": "Aakash",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "/images/7.jpeg",
+      "image": "/images/7.jpg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -110,7 +110,7 @@
       "name": "Anandh",
       "role": "All-Rounder",
       "basePrice": 30000,
-      "image": "/images/8.jpeg",
+      "image": "/images/8.jpg",
       "stats": {
         "matches": 10,
         "runs": 150,
@@ -125,7 +125,7 @@
       "name": "Saran",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "/images/9.jpeg",
+      "image": "/images/9.jpg",
       "stats": {
         "matches": 10,
         "runs": 130,
@@ -140,7 +140,7 @@
       "name": "Barath",
       "role": "All-Rounder",
       "basePrice": 15000,
-      "image": "/images/10.jpeg",
+      "image": "/images/10.jpg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -155,7 +155,7 @@
       "name": "Nandha",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/11.jpeg",
+      "image": "/images/11.jpg",
       "stats": {
         "matches": 10,
         "runs": 50,
@@ -170,7 +170,7 @@
       "name": "Giri",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/12.jpeg",
+      "image": "/images/12.jpg",
       "stats": {
         "matches": 10,
         "runs": 50,
@@ -185,7 +185,7 @@
       "name": "Varathan",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/13.jpeg",
+      "image": "/images/13.jpg",
       "stats": {
         "matches": 10,
         "runs": 60,
@@ -200,7 +200,7 @@
       "name": "Ravi",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "/images/14.jpeg",
+      "image": "/images/14.jpg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -215,7 +215,7 @@
       "name": "Arun",
       "role": "All-Rounder",
       "basePrice": 30000,
-      "image": "/images/15.jpeg",
+      "image": "/images/15.jpg",
       "stats": {
         "matches": 10,
         "runs": 180,
@@ -230,7 +230,7 @@
       "name": "Sivaram",
       "role": "All-Rounder",
       "basePrice": 35000,
-      "image": "/images/16.jpeg",
+      "image": "/images/16.jpg",
       "stats": {
         "matches": 10,
         "runs": 120,
@@ -245,7 +245,7 @@
       "name": "Raj sekar",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "/images/17.jpeg",
+      "image": "/images/17.jpg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -260,7 +260,7 @@
       "name": "Dass",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/18.jpeg",
+      "image": "https://placehold.co/160x160?text=Dass",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -275,7 +275,7 @@
       "name": "Naveen",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "/images/19.jpeg",
+      "image": "/images/19.jpg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -290,7 +290,7 @@
       "name": "Ashwin",
       "role": "All-Rounder",
       "basePrice": 15000,
-      "image": "/images/20.jpeg",
+      "image": "/images/20.jpg",
       "stats": {
         "matches": 10,
         "runs": 100,
@@ -305,7 +305,7 @@
       "name": "Nethaji",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "/images/21.jpeg",
+       "image": "https://placehold.co/160x160?text=Nethaji",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -320,7 +320,7 @@
       "name": "Kathir",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "/images/22.jpeg",
+      "image": "/images/22.jpg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -335,7 +335,7 @@
       "name": "Kiruba",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/23.jpeg",
+      "image": "/images/23.jpg",
       "stats": {
         "matches": 5,
         "runs": 50,
