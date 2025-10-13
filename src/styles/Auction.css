@@ -2,10 +2,10 @@
 :root {
   /* Sand theme palette */
   --bg: #f5efe6;         /* sand/beige background */
-  --panel: #f9f4ec;      /* light sand panels */
+  --panel: #ecd7b5;      /* light sand panels */
   --text: #37331f;       /* deep slate text for contrast */
   --muted: #0a3893;      /* muted slate */
-  --brand: #ece479;      /* sand brown (primary) */
+  --brand: #d3f830b9;      /* sand brown (primary) */
   --accent: #b8ae55;     /* warm accent */
   --danger: #8f2206;     /* soft terracotta danger */
   --border: #e0d5c2;     /* sand border */
@@ -31,10 +31,11 @@ body {
 }
 
 .au-container {
-  max-width: 1200px;
+  max-width: 1220px;
   margin: 0 auto;
   padding-top: 140px; /* Account for consolidated sticky header */
   box-sizing: border-box;
+  /* background-color:#101e40 ; */
 }
 
 @media (max-width: 768px) {
@@ -166,6 +167,7 @@ body {
   grid-template-columns: 30% 70%;
   gap: 16px;
   margin-top: 30px;
+  /* background-color: #ecd7b5; */
 }
 
 @media (max-width: 1024px) {
@@ -582,7 +584,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1001;
-  background:#0d765c !important;
+  background:#030b2e !important;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -693,7 +695,7 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   padding: 8px !important;
-  background: var(--panel) !important;
+  background: #0a1547 !important;
   backdrop-filter: blur(8px);
 }
 
@@ -732,7 +734,7 @@ body {
   }
 }
 .team-chip {
-  background: #0d765c;
+  background: #030b2e;
   /* border: 1px solid var(--border); */
   border-radius: 999px;
   padding: 5px 14px;
@@ -827,9 +829,10 @@ body {
   font-size: 14px;
   color: var(--white);
   letter-spacing: 0.5px;
+  text-align: center;
 }
 .team-chip__purse { color: var(--brand); font-size: 16px; font-weight: bold;}
-.team-chip__arrow { background: transparent; border: none; color: var(--white); cursor: pointer; font-size: 20  px; }
+.team-chip__arrow { background: transparent; border: none; color: var(--white); cursor: pointer; font-size: 20px; }
 
 .sticky-details {
   position: fixed;
@@ -1453,7 +1456,7 @@ body {
 /* Even more specific for very small screens */
 @media screen and (max-width: 400px) {
   .player-card .player-card__actions.player-card__main-actions .btn {
-    font-size: 7px !important;
+    font-size: 15px !important;
     padding: 5px 1px !important;
   }
 }

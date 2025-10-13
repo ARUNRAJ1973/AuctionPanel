@@ -16,41 +16,11 @@
       "soldPrice": null
     },
     {
-       "id": "2",
-      "name": "Vinoth",
-      "role": "All-Rounder",
-      "basePrice": 10000,
-      "image": "/images/2.jpg",
-      "stats": {
-        "matches": 10,
-        "runs": 30,
-        "wickets": 1
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
-      "id": "3",
-      "name": "Selvam",
-      "role": "All-Rounder",
-      "basePrice": 10000,
-      "image": "/images/3.jpg",
-      "stats": {
-        "matches": 10,
-        "runs": 100,
-        "wickets": 10
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
-      "id": "4",
+      "id": "2",
       "name": "Sathish",
       "role": "All-Rounder",
       "basePrice": 35000,
-      "image": "/images/4.jpg",
+      "image": "/images/2.jpg",
       "stats": {
         "matches": 10,
         "runs": 120,
@@ -60,57 +30,27 @@
       "soldTo": null,
       "soldPrice": null
     },
-    {
-      "id": "5",
-      "name": "Raj",
+     {
+      "id": "3",
+      "name": "Sivaram",
       "role": "All-Rounder",
-      "basePrice": 10000,
-      "image": "/images/5.jpg",
-      "stats": {
-        "matches": 3,
-        "runs": 30,
-        "wickets": 2
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
-      "id": "6",
-      "name": "Mathesh",
-      "role": "All-Rounder",
-      "basePrice": 5000,
-      "image": "/images/6.jpg",
+      "basePrice": 35000,
+      "image": "/images/3.jpg",
       "stats": {
         "matches": 10,
-        "runs": 10,
-        "wickets": 1
+        "runs": 120,
+        "wickets": 18
       },
       "sold": false,
       "soldTo": null,
       "soldPrice": null
     },
     {
-      "id": "7",
-      "name": "Aakash",
-      "role": "All-Rounder",
-      "basePrice": 5000,
-      "image": "/images/7.jpg",
-      "stats": {
-        "matches": 10,
-        "runs": 10,
-        "wickets": 0
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
-      "id": "8",
+      "id": "4",
       "name": "Anandh",
       "role": "All-Rounder",
       "basePrice": 30000,
-      "image": "/images/8.jpg",
+      "image": "/images/4.jpg",
       "stats": {
         "matches": 10,
         "runs": 150,
@@ -120,12 +60,27 @@
       "soldTo": null,
       "soldPrice": null
     },
+     {
+       "id": "5",
+      "name": "Arun",
+      "role": "All-Rounder",
+      "basePrice": 30000,
+      "image": "/images/5.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 180,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
     {
-      "id": "9",
+      "id": "6",
       "name": "Saran",
       "role": "All-Rounder",
       "basePrice": 20000,
-      "image": "/images/9.jpg",
+      "image": "/images/6.jpg",
       "stats": {
         "matches": 10,
         "runs": 130,
@@ -135,7 +90,52 @@
       "soldTo": null,
       "soldPrice": null
     },
+     {
+      "id": "7",
+      "name": "Raj sekar",
+      "role": "All-Rounder",
+      "basePrice": 20000,
+      "image": "/images/7.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+        {
+      "id": "8",
+      "name": "Naveen",
+      "role": "All-Rounder",
+      "basePrice": 20000,
+      "image": "/images/8.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 15
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
     {
+      "id": "9",
+      "name": "Selvam",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "/images/9.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+     {
       "id": "10",
       "name": "Barath",
       "role": "All-Rounder",
@@ -150,7 +150,7 @@
       "soldTo": null,
       "soldPrice": null
     },
-    {
+     {
       "id": "11",
       "name": "Nandha",
       "role": "All-Rounder",
@@ -165,7 +165,7 @@
       "soldTo": null,
       "soldPrice": null
     },
-    {
+     {
       "id": "12",
       "name": "Giri",
       "role": "All-Rounder",
@@ -179,7 +179,7 @@
       "sold": false,
       "soldTo": null,
       "soldPrice": null
-    },
+    },   
     {
       "id": "13",
       "name": "Varathan",
@@ -195,12 +195,42 @@
       "soldTo": null,
       "soldPrice": null
     },
-    {
+        {
       "id": "14",
-      "name": "Ravi",
+      "name": "Ashwin",
+      "role": "All-Rounder",
+      "basePrice": 15000,
+      "image": "/images/14.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 100,
+        "wickets": 10
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+     {
+      "id": "15",
+      "name": "Mathesh",
       "role": "All-Rounder",
       "basePrice": 5000,
-      "image": "/images/14.jpg",
+      "image": "/images/15.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 10,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "16",
+      "name": "Aakash",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "/images/16.jpg",
       "stats": {
         "matches": 10,
         "runs": 10,
@@ -211,45 +241,30 @@
       "soldPrice": null
     },
     {
-       "id": "15",
-      "name": "Arun",
-      "role": "All-Rounder",
-      "basePrice": 30000,
-      "image": "/images/15.jpg",
-      "stats": {
-        "matches": 10,
-        "runs": 180,
-        "wickets": 10
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
-      "id": "16",
-      "name": "Sivaram",
-      "role": "All-Rounder",
-      "basePrice": 35000,
-      "image": "/images/16.jpg",
-      "stats": {
-        "matches": 10,
-        "runs": 120,
-        "wickets": 18
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
       "id": "17",
-      "name": "Raj sekar",
+      "name": "Ravi",
       "role": "All-Rounder",
-      "basePrice": 20000,
+      "basePrice": 5000,
       "image": "/images/17.jpg",
       "stats": {
         "matches": 10,
-        "runs": 100,
-        "wickets": 10
+        "runs": 10,
+        "wickets": 0
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+     {
+      "id": "19",
+      "name": "Nethaji",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+       "image": "/images/19.jpg",
+      "stats": {
+        "matches": 5,
+        "runs": 30,
+        "wickets": 1
       },
       "sold": false,
       "soldTo": null,
@@ -257,29 +272,14 @@
     },
     {
       "id": "18",
-      "name": "Dass",
+      "name": "Kathir",
       "role": "All-Rounder",
-      "basePrice": 10000,
-      "image": "https://placehold.co/160x160?text=Dass",
+      "basePrice": 5000,
+      "image": "/images/18.jpg",
       "stats": {
         "matches": 5,
         "runs": 30,
         "wickets": 1
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
-    {
-      "id": "19",
-      "name": "Naveen",
-      "role": "All-Rounder",
-      "basePrice": 20000,
-      "image": "/images/19.jpg",
-      "stats": {
-        "matches": 10,
-        "runs": 100,
-        "wickets": 15
       },
       "sold": false,
       "soldTo": null,
@@ -287,14 +287,14 @@
     },
     {
       "id": "20",
-      "name": "Ashwin",
+      "name": "Dass",
       "role": "All-Rounder",
-      "basePrice": 15000,
+      "basePrice": 10000,
       "image": "/images/20.jpg",
       "stats": {
-        "matches": 10,
-        "runs": 100,
-        "wickets": 10
+        "matches": 5,
+        "runs": 30,
+        "wickets": 1
       },
       "sold": false,
       "soldTo": null,
@@ -302,29 +302,29 @@
     },
     {
       "id": "21",
-      "name": "Nethaji",
-      "role": "All-Rounder",
-      "basePrice": 5000,
-       "image": "https://placehold.co/160x160?text=Nethaji",
-      "stats": {
-        "matches": 5,
-        "runs": 30,
-        "wickets": 1
-      },
-      "sold": false,
-      "soldTo": null,
-      "soldPrice": null
-    },
+     "name": "Vinoth",
+     "role": "All-Rounder",
+     "basePrice": 10000,
+     "image": "/images/21.jpg",
+     "stats": {
+       "matches": 10,
+       "runs": 30,
+       "wickets": 1
+     },
+     "sold": false,
+     "soldTo": null,
+     "soldPrice": null
+   },
     {
       "id": "22",
-      "name": "Kathir",
+      "name": "Raj",
       "role": "All-Rounder",
-      "basePrice": 5000,
+      "basePrice": 10000,
       "image": "/images/22.jpg",
       "stats": {
-        "matches": 5,
+        "matches": 3,
         "runs": 30,
-        "wickets": 1
+        "wickets": 2
       },
       "sold": false,
       "soldTo": null,

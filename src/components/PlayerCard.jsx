@@ -188,7 +188,7 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
               <div className="player-card__name">{name}</div>
               <div className="player-card__role">{role}</div>
             </div>
-            <div className="base-price" style={{color:"#fff564",backgroundColor:'#37a28b',border:'1px solid black',fontWeight:'bold',borderRadius:8,textAlign:'center',paddingTop:5,paddingBottom:5}}>
+            <div className="base-price" style={{color:"#fff564",backgroundColor:'#006b53',border:'1px solid black',fontWeight:'bold',borderRadius:8,textAlign:'center',paddingTop:5,paddingBottom:5}}>
               <span>Base: ₹{basePrice.toLocaleString()}</span>
             </div>
             {sold ? (
