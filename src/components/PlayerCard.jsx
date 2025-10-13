@@ -172,10 +172,11 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
             
             {/* Action Buttons */}
             <div className="player-card__actions" style={{justifyContent:'space-evenly', paddingTop: 10, gap: '8px'}}>
-              <button className="btn small primary" onClick={onSave} style={{ minHeight: '40px', flex: '1' }}>Save</button>
+              <button className="btn small primary"
+               onClick={onSave} style={{ minHeight: '40px', flex: '1',backgroundColor:'#05552ad2',fontWeight:'bold',color:'#fff' }}>Save</button>
               <button 
                 className="btn small ghost" 
-                style={{backgroundColor:'#405167', minHeight: '40px', flex: '1'}} 
+                style={{backgroundColor:'#550505d2',fontWeight:'bold',color:'#fff', minHeight: '40px', flex: '1'}} 
                 onClick={() => setEditing(false)}
               >
                 Cancel
@@ -188,7 +189,7 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
               <div className="player-card__name">{name}</div>
               <div className="player-card__role">{role}</div>
             </div>
-            <div className="base-price" style={{color:"#fff564",backgroundColor:'#006b53',border:'1px solid black',fontWeight:'bold',borderRadius:8,textAlign:'center',paddingTop:5,paddingBottom:5}}>
+            <div className="base-price" style={{color:"#000000",backgroundColor:'#fffae4ff ',border:'1px solid #6d6d6dff',fontWeight:'bold',borderRadius:8,textAlign:'center',paddingTop:5,paddingBottom:5}}>
               <span>Base: ₹{basePrice.toLocaleString()}</span>
             </div>
             {sold ? (
@@ -199,12 +200,22 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
                   </div>
                   <button 
                     className="btn small outline player-card__undo-btn" 
+                    // onClick={async () => {
+                    //   const success = await undoSale(id);
+                    //   if (!success) {
+                    //     alert('Failed to undo sale');
+                    //   }
+                    // }}
                     onClick={async () => {
-                      const success = await undoSale(id);
-                      if (!success) {
-                        alert('Failed to undo sale');
-                      }
-                    }}
+                    const confirmUndo = window.confirm('Are you sure you want to undo this sale?');
+                    if (!confirmUndo) return; // If user cancels, do nothing
+
+                    const success = await undoSale(id);
+                    if (!success) {
+                      alert('Failed to undo sale');
+                    }
+                  }}
+
                     title="Undo this sale"
                     style={{ minHeight: '40px',backgroundColor:'#b34747' }}
                   >
@@ -213,8 +224,8 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
                 </div>
             ) : (
               <div className="player-card__actions player-card__main-actions" style={{justifyContent:'space-evenly', gap: '4px'}}>
-                <button className="btn small success" onClick={() => onAuction(id)} style={{ minHeight: '40px', flex: '1',backgroundColor:'#f0e65b',color:'#000',fontWeight:'bold' }}>Auction</button>
-                <button className="btn small" style={{backgroundColor:'#fffcdb',border:'1px solid green', minHeight: '40px', flex: '1',color:'#b34747',fontWeight:'bold'}} onClick={() => setEditing(true)}>Edit</button>
+                <button className="btn small success" onClick={() => onAuction(id)} style={{ minHeight: '40px', flex: '1',backgroundColor:'#c7c7c7ff',color:'#000',fontWeight:'bold' }}>Auction</button>
+                <button className="btn small" style={{backgroundColor:'#b7c1b8da',border:'1px solid #ebe8e8ff', minHeight: '40px', flex: '1',color:'#000000ff',fontWeight:'bold'}} onClick={() => setEditing(true)}>Edit</button>
                 <button className="btn small danger outline" 
                 onClick={() => {
                 if (window.confirm('Are you sure you want to delete this Player?')) {

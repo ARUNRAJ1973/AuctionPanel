@@ -1789,7 +1789,7 @@
 }
 
 .unsold-count {
-  background: var(--accent);
+  background: #030b2e;
   color: white;
   padding: 0.3rem 0.6rem;
   border-radius: 12px;

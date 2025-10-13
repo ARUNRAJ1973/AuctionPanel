@@ -36,7 +36,7 @@ const AddPlayer = () => {
   };
 
   return (
-    <section className="panel" style={{ marginTop: 12 ,backgroundColor:'#e7dbc6'}}>
+    <section className="panel" style={{ marginTop: 12 ,backgroundColor:'#e6e6e6'}}>
       <h2 className="panel__title">Add Player</h2>
       <form className="inline-form add-player-form" onSubmit={onSubmit} style={{ flexWrap: 'wrap', gap: 8 }}>
         <input 
@@ -44,13 +44,13 @@ const AddPlayer = () => {
           value={form.name} 
           onChange={onChange} 
           placeholder="Name" 
-          style={{ minHeight: '44px', fontSize: '16px' }}
+          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
         />
         <select 
           name="role" 
           value={form.role} 
           onChange={onChange}
-          style={{ minHeight: '44px', fontSize: '16px' }}
+          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
         >
           <option value="Batter">Batter</option>
           <option value="Bowler">Bowler</option>
@@ -64,7 +64,7 @@ const AddPlayer = () => {
           placeholder="Base Price (₹)" 
           type="number" 
           min="0"
-          style={{ minHeight: '44px', fontSize: '16px' }}
+          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
         />
         <input 
           name="matches" 
@@ -73,7 +73,7 @@ const AddPlayer = () => {
           placeholder="Matches" 
           type="number" 
           min="0"
-          style={{ minHeight: '44px', fontSize: '16px' }}
+          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
         />
         <input 
           name="runs" 
@@ -82,7 +82,7 @@ const AddPlayer = () => {
           placeholder="Runs" 
           type="number" 
           min="0"
-          style={{ minHeight: '44px', fontSize: '16px' }}
+          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
         />
         <input 
           name="wickets" 
@@ -91,7 +91,7 @@ const AddPlayer = () => {
           placeholder="Wickets" 
           type="number" 
           min="0"
-          style={{ minHeight: '44px', fontSize: '16px' }}
+          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
         />
         <input
           name="image"
@@ -100,10 +100,10 @@ const AddPlayer = () => {
           readOnly
           placeholder="Click to choose image from gallery"
           title="Click to open gallery"
-          style={{ minHeight: '44px', fontSize: '16px', cursor: 'pointer' }}
+          style={{ minHeight: '44px', fontSize: '16px', cursor: 'pointer',backgroundColor:'#fff' }}
         />
         <input ref={fileRef} type="file" accept="image/*" onChange={onPickImage} style={{ display: 'none' }} />
-        <button className="btn primary" type="submit" style={{ minHeight: '44px' ,width:'100%'}}>Add</button>
+        <button className="btn primary" type="submit" style={{backgroundColor:'#05552ad2',fontWeight:'bold',color:'#fff', minHeight: '44px' ,width:'100%'}}>Add</button>
       </form>
     </section>
   );

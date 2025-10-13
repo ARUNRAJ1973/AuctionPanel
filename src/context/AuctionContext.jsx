@@ -343,9 +343,11 @@ export const AuctionProvider = ({ children }) => {
           display: 'flex', 
           justifyContent: 'center', 
           alignItems: 'center', 
-          height: '50vh',
-          color: "#000",
-          fontSize: '18px'
+          height: '100vh',
+          color: "#ffb625ff",
+          fontSize: '25px',
+          fontWeight:'bold',
+          fontStyle:'italic'
         }}>
           Loading auction data...
         </div>

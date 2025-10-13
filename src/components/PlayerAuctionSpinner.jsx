@@ -153,12 +153,11 @@ const PlayerAuctionSpinner = () => {
 
   return (
     <div className="auc">
-      <div className="panel"  style={{backgroundColor:'#ccc1adff',marginBottom:10}}>
+      <div className="panel"  style={{backgroundColor:'#e6e6e6',marginBottom:10}}>
         <div className="panel__header-row">
           <h2 className="panel__title">🎯 Player Auction Spinner</h2>
           <div className="spinner-stats">
             <span className="unsold-count">{unsoldPlayers.length} players left</span>
-            {spinCount > 0 && <span className="spin-count">Spins: {spinCount}</span>}
           </div>
         </div>
 
@@ -175,7 +174,7 @@ const PlayerAuctionSpinner = () => {
             {looped.map((p, idx) => (
               <div key={`${p.id}-${idx}`} className={`name-item ${idx % names.length === selectedIndex ? 'selected' : ''}`} style={{
                 height: `${h}px`, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 12px',
-                borderBottom: '1px dashed var(--border)', fontWeight: idx % names.length === selectedIndex ? 800 : 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
+                borderBottom: '1px dashed var(--border)', fontWeight: idx % names.length === selectedIndex ? 800 : 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',fontStyle:'italic'
               }}>
                 {p.name}
               </div>
@@ -188,7 +187,7 @@ const PlayerAuctionSpinner = () => {
             className={`btn primary spinner-btn`}
             onClick={handleSpin}
             disabled={isSpinning}
-            style={{backgroundColor:'#f0e65b' }}
+            style={{backgroundColor:'#b7c1b8da',boxShadow:'5px 5px 10px #59605fff' }}
             type="button"
             title="Spin for 3 seconds and auto-pick"
           >
@@ -204,7 +203,7 @@ const PlayerAuctionSpinner = () => {
             onClick={handleStop}
             disabled={!isSpinning}
             type="button"
-            style={{ minWidth: 140 ,backgroundColor:'#b34747' }}
+            style={{ minWidth: 140 ,backgroundColor:'#b34747',fontWeight:'bold',boxShadow:'5px 5px 10px #090908ff' }}
             title="Stop now and pick a random player"
           >
             Stop Now

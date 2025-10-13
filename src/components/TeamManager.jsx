@@ -20,19 +20,19 @@ if (teams.length >= 7) return;
   };
 
   return (
-    <section className="panel" style={{backgroundColor:'#e7dbc6'}}>
+    <section className="panel" style={{backgroundColor:'#e6e6e6'}}>
       <div className="panel__header-row team-manager-header" style={{marginBottom: 12}}>
         <h2 className="panel__title">Teams owners</h2>
         <div className="col team-purse-input" style={{ alignItems: 'flex-end' }}>
-          <label className="muted" style={{marginBottom: 4}}>Global Purse (₹)</label>
+          <label className="muted" style={{marginBottom: 4}}> Purse Amount (₹)</label>
           <input
             type="number"
             min="0"
             value={teams[0]?.purse ?? 400000}
             onChange={(e) => setAllPurse(e.target.value)}
-            placeholder="Global purse"
+            placeholder="Purse Amount"
             title="Set purse for all teams"
-            style={{ minHeight: '44px', fontSize: '16px' }}
+            style={{ minHeight: '44px', fontSize: '16px',width:"70%" }}
           />
         </div>
       </div>
@@ -58,20 +58,25 @@ if (teams.length >= 7) return;
                       className="btn primary" 
                       onClick={() => { renameTeam(t.id, editingName); setEditingId(null); }}
                       disabled={!editingName.trim()}
-                    style={{backgroundColor:'#fffcdb',border:'1px solid #f0e65b'}}
+                    style={{backgroundColor:'#05552ad2',fontWeight:'bold',color:'#fff',border:'1px solid #f0e65b'}}
                     >
                       Save
                     </button>
                     <button 
                       className="btn ghost" 
-                      style={{backgroundColor:'#f0e65b'}}
+                      // style={{backgroundColor:'#f0e65b'}}
                       onClick={() => setEditingId(null)}
                     >
                       Cancel
                     </button>
                     <button
                       className="btn danger outline"
-                      onClick={() => canDelete && removeTeam(t.id) && setEditingId(null)}
+                      // onClick={() => canDelete && removeTeam(t.id) && setEditingId(null)}
+                       onClick={() => {
+                          if (window.confirm('Are you sure you want to delete this Player?')) {
+                            canDelete && removeTeam(t.id) && setEditingId(null)
+                          }
+                        }}
                       disabled={!canDelete}
                       title={canDelete ? "Delete team" : "Cannot delete: team has sold players"}
                     >
@@ -87,10 +92,15 @@ if (teams.length >= 7) return;
                     <div className="muted" style={{fontSize:15 , fontWeight:'bold'}}> • Remaining ₹{remaining.toLocaleString()}</div>
                   </div>
                   <div className="inline-form team-actions">
-                    <button className="btn" style={{backgroundColor:'#f0e65b', minHeight: '44px',fontWeight:'bold',color:'#000'}}  onClick={() => { setEditingId(t.id); setEditingName(t.name); }}>Edit</button>
+                    <button className="btn" style={{backgroundColor:'#b7c1b8da',border:'1px solid #ebe8e8ff', minHeight: '44px',fontWeight:'bold',color:'#000'}}  onClick={() => { setEditingId(t.id); setEditingName(t.name); }}>Edit</button>
                     <button
                       className="btn danger outline"
-                      onClick={() => canDelete && removeTeam(t.id)}
+                      // onClick={() => canDelete && removeTeam(t.id)}
+                        onClick={() => {
+                            if (window.confirm('Are you sure you want to delete this Player?')) {
+                              canDelete && removeTeam(t.id)
+                            }
+                          }}
                       disabled={!canDelete}
                       title={canDelete ? "Remove team" : "Cannot remove: team has sold players"}
                       style={{minHeight: '44px',fontWeight:'bold'}}
@@ -107,7 +117,8 @@ if (teams.length >= 7) return;
 
       <div className="add-team-footer">
 {teams.length >= 7 ? (
-<button className="btn" disabled title="Team limit reached (7)">Add team</button>
+<button className="btn"
+ disabled title="Team limit reached (7)">Add team</button>
         ) : (
           <AddTeamInline onAdd={(name) => handleAddInline(name)} />
         )}
@@ -130,7 +141,7 @@ const AddTeamInline = ({ onAdd }) => {
   };
 
   if (!open) {
-    return <button className="btn primary" onClick={() => setOpen(true)}>Add team</button>;
+    return <button className="btn primary" style={{backgroundColor:'#05552ad2',fontWeight:'bold',color:'#fff'}} onClick={() => setOpen(true)}>Add team</button>;
   }
   return (
     <form className="inline-form add-team-form" onSubmit={submit}>
@@ -141,8 +152,8 @@ const AddTeamInline = ({ onAdd }) => {
         onChange={(e) => setName(e.target.value)}
         style={{ minHeight: '44px', fontSize: '16px' }}
       />
-      <button className="btn primary" type="submit" style={{ minHeight: '44px' }}>Add</button>
-      <button className="btn ghost" style={{backgroundColor:'#405167', minHeight: '44px'}} type="button" onClick={() => { setOpen(false); setName(""); }}>Cancel</button>
+      <button className="btn primary" type="submit"  style={{backgroundColor:'#b7c1b8da',color:'#000000ff',fontWeight:'bold', minHeight: '44px'}}>Add</button>
+      <button className="btn ghost" style={{backgroundColor:'#757575ff', border:"1px solid #000",boxShadow:'5px 5px 10px #59605fff',color:'#fff', minHeight: '44px'}} type="button" onClick={() => { setOpen(false); setName(""); }}>Cancel</button>
     </form>
   );
 };

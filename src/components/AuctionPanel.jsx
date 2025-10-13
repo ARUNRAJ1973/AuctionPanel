@@ -49,9 +49,9 @@ const AuctionPanel = ({ onSold }) => {
   };
 
   return (
-    <section className="panel auction">
+    <section className="panel auction" style={{height: "100vh"}}>
       <div className="panel__header-row">
-        <h2 className="panel__title">Auction</h2>
+        <h1 className="panel__title">Auction</h1>
         <button className="btn ghost" onClick={() => { window.location.hash = '#/'; }}>Back</button>
       </div>
 
@@ -61,7 +61,7 @@ const AuctionPanel = ({ onSold }) => {
             <img src={image} alt={name} />
             <div className="auction__info">
               <div className="title-row">
-                <h3>{name}</h3>
+                <h2>{name}</h2>
                 <span className="role">{role}</span>
               </div>
               <div className="muted">Base Price: ₹{basePrice.toLocaleString()}</div>
@@ -86,9 +86,9 @@ const AuctionPanel = ({ onSold }) => {
             </div>
           </div>
           <div className="bid-row main-bid-row">
-            <button className="btn circle" style={{backgroundColor:'#d8ca02ff',color:'#fff', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => decrementBid()}>-</button>
+            <button className="btn circle" style={{backgroundColor:'#db9800',color:'#fff', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => decrementBid()}>-</button>
             <div className="bid">₹{(currentBid ?? basePrice).toLocaleString()}</div>
-            <button className="btn circle" style={{backgroundColor:'#d8ca02ff',color:'#fff', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => incrementBid()}>+</button>
+            <button className="btn circle" style={{backgroundColor:'#db9800',color:'#fff', minWidth: '50px', minHeight: '50px', fontSize: '20px'}} onClick={() => incrementBid()}>+</button>
           </div>
 
           <div className="team-selection">
@@ -125,7 +125,7 @@ const AuctionPanel = ({ onSold }) => {
               className="btn success sell-button" 
               disabled={disabledSell} 
               onClick={onSell}
-              style={{ minHeight: '50px', fontSize: '16px', fontWeight: 'bold',backgroundColor:'#d8ca02ff' }}
+              style={{ minHeight: '50px', fontSize: '16px', fontWeight: 'bold',backgroundColor:'#db9800' }}
             >
               Sell to {teamId ? teamById(Number(teamId))?.name : 'Selected Team'}
             </button>
