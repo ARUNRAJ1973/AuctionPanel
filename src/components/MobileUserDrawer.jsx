@@ -89,7 +89,7 @@ const MobileUserDrawer = () => {
             <button 
               className="mobile-logout-btn"
                onClick={() => {
-                if (window.confirm('Are you sure you want to delete this item?')) {
+                if (window.confirm('Are you sure you want to Logout?')) {
                   handleLogout();
                 }
               }}

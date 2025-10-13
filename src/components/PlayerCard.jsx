@@ -217,7 +217,7 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
                 <button className="btn small" style={{backgroundColor:'#fffcdb',border:'1px solid green', minHeight: '40px', flex: '1',color:'#b34747',fontWeight:'bold'}} onClick={() => setEditing(true)}>Edit</button>
                 <button className="btn small danger outline" 
                 onClick={() => {
-                if (window.confirm('Are you sure you want to delete this item?')) {
+                if (window.confirm('Are you sure you want to delete this Player?')) {
                   onDelete(id);
                 }
               }}

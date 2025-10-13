@@ -36,7 +36,7 @@ const StickyTeamBar = ({ enableDetails = false }) => {
           </div>
           <button className="header-logout-btn" 
           onClick={() => {
-          if (window.confirm('Are you sure you want to delete this item?')) {
+          if (window.confirm('Are you sure you want to Logout ?')) {
             logout();
           }
         }}

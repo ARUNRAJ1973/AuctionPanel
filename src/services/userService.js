@@ -3,12 +3,12 @@ const USERS_KEY = 'kpl_auction_users';
 const CURRENT_USER_KEY = 'kpl_auction_current_user';
 
 // Admin credentials
-const ADMIN_EMAIL = 'kplauction123@gmail.com';
-const ADMIN_PASSWORD = 'kplauction@123';
+const ADMIN_EMAIL = 'kplcricket@gmail.com';
+const ADMIN_PASSWORD = 'kplcricket';
 
 // Default regular user credentials
-const USER_EMAIL = 'kpl@gmail.com';
-const USER_PASSWORD = 'kpl@123';
+const USER_EMAIL = 'kpt@gmail.com';
+const USER_PASSWORD = 'kpt123';
 
 class UserService {
   constructor() {

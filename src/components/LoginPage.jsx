@@ -10,10 +10,10 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Static demo credentials
-  const ADMIN_EMAIL = 'kplauction123@gmail.com';
-  const ADMIN_PASSWORD = 'kplauction@123';
-  const USER_EMAIL = 'kpl@gmail.com';
-  const USER_PASSWORD = 'kpl@123';
+  const ADMIN_EMAIL = 'kplcricket@gmail.com';
+  const ADMIN_PASSWORD = 'kplcricket';
+  const USER_EMAIL = 'kpt@gmail.com';
+  const USER_PASSWORD = 'kpt123';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -150,9 +150,6 @@ const LoginPage = () => {
           </form>
 
           {/* <div className="demo-section" style={{marginTop: 16}}>
-            <div className="divider">
-              <span>Quick Admin Access</span>
-            </div>
             <button 
               type="button" 
               className="demo-btn"
@@ -162,16 +159,9 @@ const LoginPage = () => {
               <span className="demo-icon">🚀</span>
               Use Admin Credentials
             </button>
-            <div className="demo-info">
-              <p><strong>Admin Email:</strong> kplauction123@gmail.com</p>
-              <p><strong>Password:</strong> kplauction@123</p>
-            </div>
           </div> */}
 
-          {/* <div className="demo-section" style={{marginTop: 16}}>
-            <div className="divider">
-              <span>Quick User Access</span>
-            </div>
+          <div className="demo-section" style={{marginTop: 16}}>
             <button 
               type="button" 
               className="demo-btn"
@@ -181,11 +171,7 @@ const LoginPage = () => {
               <span className="demo-icon">🎟️</span>
               Use User Credentials
             </button>
-            <div className="demo-info">
-              <p><strong>User Email:</strong> kpl@gmail.com</p>
-              <p><strong>Password:</strong> kpl@123</p>
-            </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
