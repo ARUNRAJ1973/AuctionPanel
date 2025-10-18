@@ -169,7 +169,7 @@ const PlayerAuctionSpinner = () => {
           <div aria-hidden style={{ position:'absolute', bottom:0, left:0, right:0, height: h, background: 'linear-gradient(0deg, rgba(245,245,245,0.9), rgba(245,245,245,0))', pointerEvents:'none', zIndex:2 }} />
 
           {/* Pointer lane */}
-          <div aria-hidden style={{ position:'absolute', top:117, left:0, right:0, height: h, background:'rgba(37,99,235,0.08)', borderTop:'1px solid rgba(37,99,235,0.25)', borderBottom:'1px solid rgba(37,99,235,0.25)', zIndex:1 }} />
+          <div aria-hidden style={{ position:'absolute', top:110, left:0, right:0, height: h, background:'rgba(37,99,235,0.08)', borderTop:'1px solid rgba(37,99,235,0.25)', borderBottom:'1px solid rgba(37,99,235,0.25)', zIndex:1 }} />
 
           <div ref={listRef} style={{ willChange: 'transform', transform: `translateY(${baseTranslate}px)`, transition: isSpinning ? 'none' : 'transform 120ms ease-out', position:'relative', zIndex:0 }}>
             {looped.map((p, idx) => (
