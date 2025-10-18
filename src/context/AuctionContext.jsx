@@ -341,13 +341,14 @@ export const AuctionProvider = ({ children }) => {
       <AuctionContext.Provider value={value}>
         <div style={{ 
           display: 'flex', 
+          backgroundColor:'#0b1628',
           justifyContent: 'center', 
           alignItems: 'center', 
           height: '100vh',
           color: "#ffb625ff",
           fontSize: '25px',
           fontWeight:'bold',
-          fontStyle:'italic'
+          fontStyle:'italic',
         }}>
           Loading auction data...
         </div>

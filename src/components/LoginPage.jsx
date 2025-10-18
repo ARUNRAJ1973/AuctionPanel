@@ -149,7 +149,7 @@ const LoginPage = () => {
             </button>
           </form>
 
-          {/* <div className="demo-section" style={{marginTop: 16}}>
+          <div className="demo-section" style={{marginTop: 16}}>
             <button 
               type="button" 
               className="demo-btn"
@@ -159,7 +159,7 @@ const LoginPage = () => {
               <span className="demo-icon">🚀</span>
               Use Admin Credentials
             </button>
-          </div> */}
+          </div>
 
           <div className="demo-section" style={{marginTop: 16}}>
             <button 

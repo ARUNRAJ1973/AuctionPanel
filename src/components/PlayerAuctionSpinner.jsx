@@ -147,9 +147,10 @@ const PlayerAuctionSpinner = () => {
   const names = unsoldPlayers.map(p => ({ id: p.id, name: p.name }));
   const looped = [...names, ...names];
 
-  // Compute translateY so that selectedIndex item appears under the pointer area
+  // Compute translateY so that selectedIndex item appears under the center pointer row
   const h = 48;
-  const baseTranslate = -(selectedIndex * h + offset);
+  const centerOffset = 2 * h; // middle of 5 visible rows
+  const baseTranslate = -((selectedIndex * h + offset) - centerOffset);
 
   return (
     <div className="auc">
@@ -164,7 +165,7 @@ const PlayerAuctionSpinner = () => {
         {/* Vertical name scroller */}
         <div className="spinner-container" style={{ position: 'relative', height: `${h * 5}px`, overflow: 'hidden', borderRadius: 12, border: '1px solid var(--border)' }}>
           {/* Fade masks for top and bottom for professional look */}
-          <div aria-hidden style={{ position:'absolute', top:0, left:0, right:0, height: h, background: 'linear-gradient(180deg, rgba(245,245,245,0.9), rgba(245,245,245,0))', pointerEvents:'none', zIndex:2 }} />
+          <div aria-hidden style={{ position:'absolute', top:0, left:0, right:0, height: h, background: 'linear-gradient(180deg, rgba(245,245,245,0.9), rgba(255, 0, 0, 0))', pointerEvents:'none', zIndex:2 }} />
           <div aria-hidden style={{ position:'absolute', bottom:0, left:0, right:0, height: h, background: 'linear-gradient(0deg, rgba(245,245,245,0.9), rgba(245,245,245,0))', pointerEvents:'none', zIndex:2 }} />
 
           {/* Pointer lane */}
@@ -184,7 +185,7 @@ const PlayerAuctionSpinner = () => {
 
         <div className="spinner-controls" style={{ display: 'flex', gap: 8 }}>
           <button
-            className={`btn primary spinner-btn`}
+            className={"playeredit"}
             onClick={handleSpin}
             disabled={isSpinning}
             style={{backgroundColor:'#b7c1b8da',boxShadow:'5px 5px 10px #59605fff' }}
@@ -199,7 +200,7 @@ const PlayerAuctionSpinner = () => {
           </button>
 
           <button
-            className="btn success"
+            className={"playerdelete"}
             onClick={handleStop}
             disabled={!isSpinning}
             type="button"

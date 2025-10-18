@@ -1,11 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { useAuction } from "../context/AuctionContext";
-import { useAuth } from "../context/AuthContext";
-import MobileUserDrawer from "./MobileUserDrawer";
 
 const StickyTeamBar = ({ enableDetails = false }) => {
   const { teams, players } = useAuction();
-  const { logout, user, isAdmin } = useAuth();
   const [expanded, setExpanded] = useState(null);
 
   const purchases = useMemo(() => {
@@ -25,30 +22,9 @@ const StickyTeamBar = ({ enableDetails = false }) => {
 
   return (
     <div>
-      <div className="sticky-header">
-        <div className="sticky-header__left">
-          <div className="sticky-header__title">KPL Auction</div>
-        </div>
-        <div className="sticky-header__right">
-          <div className="user-info">
-            <span className="user-name">Hello, {user?.name || 'User'}</span>
-            <span className="user-role">{isAdmin() ? '👑 Admin' : '👤 Viewer'}</span>
-          </div>
-          <button className="header-logout-btn" 
-          onClick={() => {
-          if (window.confirm('Are you sure you want to Logout ?')) {
-            logout();
-          }
-        }}
-          title="Logout">
-            <span className="logout-icon">🚪</span>
-            <span className="logout-text">Logout</span>
-          </button>
-          <MobileUserDrawer />
-        </div>
-      </div>
+      {/* Only sticky teams strip, no title/greeting/logout */}
       <div className="sticky-teams">
-          {teams.map(t => {
+        {teams.map(t => {
           const remaining = Math.max(0, t.purse - t.spent);
           const isOpen = String(expanded) === String(t.id);
           return (
@@ -79,8 +55,8 @@ const StickyTeamBar = ({ enableDetails = false }) => {
             return (
               <div>
                 <div className="sticky-details__header">
-                  <span style={{fontSize:25 ,color:'#fe0101ff',fontWeight:'bold' }}>{t.name}</span>
-                  <span className="muted" style={{fontSize:22 , color:'#fe0101ff',fontWeight:'bold'}}> {"-->"} Remaining ₹{remaining.toLocaleString()}</span>
+                  <span className="remaining"> {t.name} </span>
+                  <span className="remaining">{" "}{"=>"} Remaining ₹{remaining.toLocaleString()}</span>
                 </div>
                 {list.length === 0 ? (
                   <div className="empty">No players bought yet</div>
@@ -90,10 +66,10 @@ const StickyTeamBar = ({ enableDetails = false }) => {
                       <li key={i.id} className="list__item list__item--space-between sticky-details__item">
                         <span className="player-row">
                           <img src={i.image} alt={i.name} />
-                          <span style={{fontSize:20 ,color:'#000000ff',fontWeight:'bold' }}>{i.name}</span>
+                          <span className="soldprice">{i.name}</span>
                         </span>
                         <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span style={{fontSize:20 ,color:'#000000ff',fontWeight:'bold' }}>₹{i.price.toLocaleString()}</span>
+                          <span className="soldprice" >₹{i.price.toLocaleString()}</span>
                         </span>
                       </li>
                     ))}

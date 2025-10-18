@@ -834,9 +834,9 @@
 }
 
 /* Container padding for new header layout */
-.au-container {
-  padding-top: 140px !important; /* Account for header + teams container */
-}
+/* .au-container {
+  padding-top: 140px !important;
+} */
 
 /* User Info in Header */
 .user-info {
@@ -946,6 +946,7 @@
   color: #ffffff;
   max-width: 600px;
   margin: 0 auto;
+  font-style: italic;
 }
 
 .dashboard-stats {
@@ -1022,7 +1023,7 @@
   border-bottom: 4px solid #667eea;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #345ec8 0%, #3db8da 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1106,11 +1107,9 @@
 }
 
 .owner-label {
-  font-size: 0.8rem;
-  opacity: 0.8;
-  font-weight: 500;
+  font-size:15px;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .team-roster-header h3 {
@@ -1121,15 +1120,11 @@
 .team-roster-stats {
   display: flex;
   gap: 1rem;
-  font-size: 0.9rem;
-}
-
-.budget-spent {
-  opacity: 0.9;
+  font-size: 17px;
 }
 
 .budget-remaining {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .team-roster-players {
@@ -1138,8 +1133,9 @@
 
 .no-players {
   text-align: center;
-  color: #6b7280;
+  color: #091328;
   font-style: italic;
+  font-weight: bold;
   margin: 2rem 0;
 }
 
@@ -1342,13 +1338,16 @@
 }
 
 .empty-state h3 {
-  font-size: 1.5rem;
+  font-size:25px;
   color: #1f2937;
   margin-bottom: 0.5rem;
 }
 
 .empty-state p {
-  color: #6b7280;
+  color: #0c172f;
+  font-size:15px;
+  font-weight: 700;
+  font-style: italic;
 }
 
 /* Sold Players Grid Styles - Original for Admin */
@@ -1715,7 +1714,7 @@
 .viewer-available-player-price {
   font-weight: 700;
   color: #fffb00;
-  background: #09675c;
+  background: #10082dd9;
   padding: 0.5rem;
   border-radius: 6px;
   text-align: center;
@@ -2258,9 +2257,21 @@
   }
   
   /* Adjust container padding for mobile */
-  .au-container {
+  /* .au-container {
     padding-top: 160px !important;
-  }
+  } */
+}
+.remaining {
+  font-size:22px !important ;
+   color:rgb(178, 4, 4) !important;
+   font-weight:bold!important;
+   font-style: italic;
+}
+ .soldprice {
+  font-size:22px !important ;
+   color:rgb(0, 0, 0) !important;
+   font-weight:bold!important;
+   font-style: italic;
 }
 
 @media (max-width: 768px) {
@@ -2321,6 +2332,9 @@
     padding: 0.8rem 0.9rem;
     font-size: 0.9rem;
   }
+  .remaining , .soldprice {
+  font-size:17px !important ;
+}
 }
 
 @media (max-width: 480px) {

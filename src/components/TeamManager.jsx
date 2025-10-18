@@ -24,7 +24,7 @@ if (teams.length >= 7) return;
       <div className="panel__header-row team-manager-header" style={{marginBottom: 12}}>
         <h2 className="panel__title">Teams owners</h2>
         <div className="col team-purse-input" style={{ alignItems: 'flex-end' }}>
-          <label className="muted" style={{marginBottom: 4}}> Purse Amount (₹)</label>
+          <label className="muted" style={{marginBottom: 4,fontStyle:'italic'}}> Purse Amount (₹)</label>
           <input
             type="number"
             min="0"
@@ -32,7 +32,7 @@ if (teams.length >= 7) return;
             onChange={(e) => setAllPurse(e.target.value)}
             placeholder="Purse Amount"
             title="Set purse for all teams"
-            style={{ minHeight: '44px', fontSize: '16px',width:"70%" }}
+            className="purseprice"
           />
         </div>
       </div>
@@ -92,9 +92,9 @@ if (teams.length >= 7) return;
                     <div className="muted" style={{fontSize:15 , fontWeight:'bold'}}> • Remaining ₹{remaining.toLocaleString()}</div>
                   </div>
                   <div className="inline-form team-actions">
-                    <button className="btn" style={{backgroundColor:'#b7c1b8da',border:'1px solid #ebe8e8ff', minHeight: '44px',fontWeight:'bold',color:'#000'}}  onClick={() => { setEditingId(t.id); setEditingName(t.name); }}>Edit</button>
+                    <button className="playeredit"   onClick={() => { setEditingId(t.id); setEditingName(t.name); }}>Edit</button>
                     <button
-                      className="btn danger outline"
+                      className="playerdelete" 
                       // onClick={() => canDelete && removeTeam(t.id)}
                         onClick={() => {
                             if (window.confirm('Are you sure you want to delete this Player?')) {
@@ -103,7 +103,6 @@ if (teams.length >= 7) return;
                           }}
                       disabled={!canDelete}
                       title={canDelete ? "Remove team" : "Cannot remove: team has sold players"}
-                      style={{minHeight: '44px',fontWeight:'bold'}}
                     >
                       Delete
                     </button>

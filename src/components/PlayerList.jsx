@@ -1,9 +1,11 @@
 import React, { useMemo, useState } from "react";
 import { useAuction } from "../context/AuctionContext";
+import { useAuth } from "../context/AuthContext";
 import PlayerCard from "./PlayerCard";
 
 const PlayerList = () => {
   const { players, deletePlayer, selectedPlayerId } = useAuction();
+  const { logout } = useAuth();
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
@@ -51,6 +53,20 @@ const PlayerList = () => {
             isSelected={selectedPlayerId === p.id}
           />
         ))}
+      </div>
+      <div style={{ marginTop: 12 }}>
+        <button
+          className="btn danger outline"
+          style={{ width: '100%', minHeight: '44px' }}
+          title="Logout"
+          onClick={() => {
+            if (window.confirm('Are you sure you want to Logout ?')) {
+              logout();
+            }
+          }}
+        >
+          Logout
+        </button>
       </div>
     </section>
   );

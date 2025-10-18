@@ -187,9 +187,9 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
           <>
             <div className="player-card__row">
               <div className="player-card__name">{name}</div>
-              <div className="player-card__role">{role}</div>
+              <div className="player-card__name">{role}</div>
             </div>
-            <div className="base-price" style={{color:"#000000",backgroundColor:'#fffae4ff ',border:'1px solid #6d6d6dff',fontWeight:'bold',borderRadius:8,textAlign:'center',paddingTop:5,paddingBottom:5}}>
+            <div className="baseprice">
               <span>Base: ₹{basePrice.toLocaleString()}</span>
             </div>
             {sold ? (
@@ -224,15 +224,15 @@ const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
                 </div>
             ) : (
               <div className="player-card__actions player-card__main-actions" style={{justifyContent:'space-evenly', gap: '4px'}}>
-                <button className="btn small success" onClick={() => onAuction(id)} style={{ minHeight: '40px', flex: '1',backgroundColor:'#c7c7c7ff',color:'#000',fontWeight:'bold' }}>Auction</button>
-                <button className="btn small" style={{backgroundColor:'#b7c1b8da',border:'1px solid #ebe8e8ff', minHeight: '40px', flex: '1',color:'#000000ff',fontWeight:'bold'}} onClick={() => setEditing(true)}>Edit</button>
-                <button className="btn small danger outline" 
+                <button className="playerauction" onClick={() => onAuction(id)}>Auction</button>
+                <button className="playeredit" onClick={() => setEditing(true)}>Edit</button>
+                <button className="playerdelete" 
                 onClick={() => {
                 if (window.confirm('Are you sure you want to delete this Player?')) {
                   onDelete(id);
                 }
               }}
-                style={{ minHeight: '40px', flex: '1',backgroundColor:'#b34747',fontWeight:'bold' }}>Delete</button>
+                >Delete</button>
               </div>
             )}
           </>

@@ -29,7 +29,6 @@ function useHashRoute() {
 const AdminMainPage = () => {
   return (
     <div>
-      <StickyTeamBar enableDetails={true} />
       <div className="au-container">
         <div className="main-grid">
           <div>
@@ -41,6 +40,10 @@ const AdminMainPage = () => {
         </div>
         <div style={{ marginTop: 16 }}>
           {/* Sold list intentionally hidden on main per request; add back if needed */}
+        </div>
+        {/* Place sticky team bar at the very bottom after all players */}
+        <div style={{ marginTop: 16 }}>
+          <StickyTeamBar enableDetails={true} />
         </div>
       </div>
     </div>

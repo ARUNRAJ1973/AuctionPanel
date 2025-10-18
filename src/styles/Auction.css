@@ -1,17 +1,21 @@
 /* Global layout */
 :root {
-  /* Sand theme palette */
-  --bg: #f5efe6;         /* sand/beige background */
-  --panel: #e6e6e6;      /* light sand panels */
-  --text: #37331f;       /* deep slate text for contrast */
-  --muted: #000000;      /* muted slate */
-  /* --muted: #0a3893;      */
-  --brand: #ffffff;      /* sand brown (primary) */
-  --accent: #b8ae55;     /* warm accent */
-  --danger: #8f2206;     /* soft terracotta danger */
-  --border: #e0d5c2;     /* sand border */
-  --white: #fff;     /* sand border */
-  --sticky: #646464;     /* sand border */
+  --bg: #f5efe6; 
+  --panel: #e6e6e6;
+  --text: #37331f; 
+  --muted: #000000;    
+  --brand: #ffffff;   
+  --accent: #b8ae55; 
+  --danger: #8f2206;     
+  --border: #e0d5c2;    
+  --white: #fff;    
+  --sticky: #646464;    
+  --auction: #c7c7c7;    
+  --edit: #b7c1b8da;    
+  --delete: #b34747;    
+  /* --auction: #c7c7c7;    
+  --edit: #b7c1b8da;    
+  --delete: #b34747;     */
 }
 
 /* Viewer theme overrides: applied when body has .theme-viewer */
@@ -35,7 +39,7 @@ body {
 .au-container {
   max-width: 1190px;
   padding: 10px;
-  padding-top: 140px; /* Account for consolidated sticky header */
+  padding-top: 50px; /* Account for consolidated sticky header */
   box-sizing: border-box;
   /* background-color:#101e40 ; */
 }
@@ -43,18 +47,23 @@ body {
 @media (max-width: 768px) {
   .au-container {
     padding: 8px;
-    padding-top: 180px; /* More space on mobile for wrapped teams */
+    padding-top: 70px; /* More space on mobile for wrapped teams */
   }
 }
 
 @media (max-width: 500px) {
   .au-container {
     padding: 8px;
-    padding-top: 160px; /* Account for sticky teams with proper spacing */
+    padding-top: 50px; /* Account for sticky teams with proper spacing */
     max-width: 100vw;
     width: 100%;
     box-sizing: border-box;
   }
+  .sticky-details {
+    top: 120px !important;
+    padding: 10px !important;
+    height: 100vh !important;
+}
 }
 
 /* Viewer-only: force one card per row under 500px for player grids */
@@ -197,7 +206,7 @@ body {
 /* Responsive adjustments for consolidated sticky header */
 @media (max-width: 768px) {
   .sticky-details {
-    top: 170px;
+    top: 70px;
     left: 8px;
     right: 8px;
     padding: 12px;
@@ -207,7 +216,7 @@ body {
 
 @media (max-width: 500px) {
   .sticky-details {
-    top: 140px; /* Position below sticky teams with proper spacing */
+    top: 55px !important; /* Position below sticky teams with proper spacing */
     left: 8px;
     right: 8px;
     padding: 8px;
@@ -217,7 +226,7 @@ body {
 
 @media (max-width: 480px) {
   .sticky-details {
-    top: 230px;
+    top: 50px;
     left: 4px;
     right: 4px;
     padding: 8px;
@@ -230,7 +239,7 @@ body {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 14px;
+  padding: 30px;
 }
 
 @media (max-width: 768px) {
@@ -483,7 +492,7 @@ body {
 .badge--sold { background: #f59e0b; color: #1e0b00; }
 .player-card__body { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
 .player-card__row { display: flex; align-items: baseline; justify-content: space-between; }
-.player-card__name { font-weight: 700; }
+.player-card__name { font-weight: 700;font-style: italic; }
 .player-card__role { color: var(--muted); font-size: 15px; }
 .player-card__stats { color: var(--muted); font-size: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
 .player-card__actions { display: flex; gap: 8px; }
@@ -492,7 +501,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1f2937;
+  background: #053704;
   border-radius: 8px;
   padding: 8px 10px;
   gap: 8px;
@@ -509,15 +518,19 @@ body {
   font-weight: 700;
   color: #fef3c7;
   font-size: 14px;
+  font-style: italic;
 }
 
 .player-card__sold-team {
   color: #a7f3d0;
   font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .player-card__undo-btn {
   flex-shrink: 0;
+  font-style: italic;
   padding: 4px 8px !important;
   font-size: 11px !important;
   min-width: 45px;
@@ -535,6 +548,49 @@ body {
   align-items: center;
 }
 
+.baseprice {
+    color: rgb(0, 0, 0);
+    background-color: var(--auction);
+    border: 1px solid rgb(109, 109, 109);
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-style: italic;
+    font-size: 15px;
+}
+.playerauction {
+    min-height: 40px;
+    flex: 1 1 0%;
+    background-color: var(--auction);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-style: italic;
+    border: 0px;
+    font-size: 13px;
+  }
+  .playeredit {
+    background-color:var(--edit);
+    border: 1px solid rgb(235, 232, 232);
+    min-height: 40px;
+    flex: 1 1 0%;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 13px;
+    border: 0px;
+  }
+  .playerdelete {
+    min-height: 40px;
+    flex: 1 1 0%;
+    background-color:var(--delete);
+    font-weight: bold;
+    font-size: 13px;
+    font-style: italic;
+    border: 0px;
+    color: #fff;
+}
 .player-card__edit input, 
 .player-card__edit select {
   flex: 1;
@@ -544,7 +600,7 @@ body {
   color: var(--text);
   padding: 6px 8px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .player-card__edit input:focus,
@@ -701,7 +757,7 @@ body {
 
 .sticky-teams {
   position: fixed;
-  top: 80px; /* Position below the main header */
+  top: 0px; /* Position below the main header */
   left: 0;
   right: 0;
   z-index: 1001;
@@ -715,7 +771,7 @@ body {
 
 @media (max-width: 768px) {
   .sticky-teams {
-    top: 60px;
+    top: 0px;
     gap: 6px;
     padding: 8px 12px 12px;
   }
@@ -723,7 +779,7 @@ body {
 
 @media (max-width: 500px) {
   .sticky-teams {
-    top: 60px !important;
+    top: 0px !important;
     left: 8px !important;
     right: 8px !important;
     display: grid !important;
@@ -738,7 +794,7 @@ body {
 
 @media (max-width: 480px) {
   .sticky-teams {
-    top: 65 px;
+    top: 0px;
     left: 6px !important;
     right: 6px !important;
     gap: 3px;
@@ -858,7 +914,7 @@ body {
 
 .sticky-details {
   position: fixed;
-  top: 150px; /* Position below consolidated sticky header */
+  top: 70px; /* Position below consolidated sticky header */
   left: 16px;
   right: 16px;
   max-width: 1168px; /* Match container max-width minus padding */
@@ -868,14 +924,14 @@ body {
   border-radius: 10px;
   padding: 30px;
   z-index: 999;
-  height: 70vh;
+  height: 100vh;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
  .sticky-details__header { margin-bottom: 8px;display: flex;justify-content: center; }
 
 /* sticky details player row */
 .sticky-details__item .player-row { display: flex; align-items: center; gap: 8px; }
-.sticky-details__item img { width:75px; height:75px; border-radius: 10%; object-fit: cover; border: 1px solid var(--border); }
+.sticky-details__item img { width:55px; height:55px; border-radius: 10%; object-fit: cover; border: 1px solid var(--border); }
 
 /* Auction panel */
 .auction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -894,6 +950,7 @@ body {
   .auction-grid {
     gap: 6px;
   }
+  .sticky-details__item img { width:45px; height:45px; }
 }
 .auction-left { display: flex; flex-direction: column; gap: 12px; }
 .auction-right { display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
@@ -1373,7 +1430,7 @@ body {
   /* Ensure sticky teams stay fixed with proper container spacing */
   .sticky-teams {
     position: fixed !important;
-    top: 60px !important;
+    top: 0px !important;
     left: 8px !important;
     right: 8px !important;
     z-index: 1000 !important;
@@ -1639,7 +1696,7 @@ body {
 
 /* Hamburger Menu Button */
 .mobile-menu-toggle {
-  background: #fff;
+  background: #ffffff00;
   color: red;
   border: none;
   cursor: pointer;
@@ -1656,7 +1713,7 @@ body {
 .mobile-menu-toggle span {
   width: 20px;
   height: 2px;
-  background: var(--text);
+  background: var(--white);
   border-radius: 1px;
   transition: all 0.3s ease;
   transform-origin: center;
@@ -1879,6 +1936,7 @@ body {
   
   .dashboard-section h2 {
     font-size: 16px !important;
+    font-style: italic;
   }
   
   /* Make stats cards and player grids responsive */
