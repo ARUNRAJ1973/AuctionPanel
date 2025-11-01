@@ -79,7 +79,7 @@
       "id": "6",
       "name": "Saran",
       "role": "All-Rounder",
-      "basePrice": 20000,
+      "basePrice": 25000,
       "image": "/images/6.jpg",
       "stats": {
         "matches": 10,
@@ -349,19 +349,19 @@
   "teams": [
     {
       "id": "4",
-      "name": "CSK",
+      "name": "Team A",
       "purse": 400000,
       "spent": 0
     },
     {
       "id": "5",
-      "name": "MI",
+      "name": "Team B",
       "purse": 400000,
       "spent": 0
     },
     {
       "id": "6",
-      "name": "RCB",
+      "name": "Team C",
       "purse": 400000,
       "spent": 0
     }

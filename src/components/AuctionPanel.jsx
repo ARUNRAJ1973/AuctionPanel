@@ -18,6 +18,8 @@ const AuctionPanel = ({ onSold }) => {
 
   const [teamId, setTeamId] = useState("");
   const [error, setError] = useState("");
+  const [isSelling, setIsSelling] = useState(false);
+
 
   const disabledSell = useMemo(() => !selectedPlayer || !teamId, [selectedPlayer, teamId]);
 
@@ -34,19 +36,25 @@ const AuctionPanel = ({ onSold }) => {
   const soldTeam = soldTo ? teamById(soldTo) : null;
 
   const onSell = async () => {
+    if (isSelling) return; // Prevent double clicks
+    setIsSelling(true);
     setError("");
+
     try {
       const res = await markSold(Number(teamId));
       if (!res?.ok) {
         setError(res?.error || "Could not sell");
       } else if (onSold && selectedPlayer) {
-        onSold({ teamId: Number(teamId), playerId: selectedPlayer.id, price: (currentBid ?? basePrice) });
+        onSold({ teamId: Number(teamId),playerId: selectedPlayer.id,price: currentBid ?? basePrice, });
       }
     } catch (error) {
-      console.error('Error selling player:', error);
-      setError('Failed to sell player');
+      console.error("Error selling player:", error);
+       setError("Failed to sell player");
+    } finally {
+      setIsSelling(false); // Re-enable button
     }
   };
+
 
   return (
     <section className="panel auction" style={{height: "100vh"}}>
@@ -123,11 +131,12 @@ const AuctionPanel = ({ onSold }) => {
             </div>
             <button 
               className="btn success sell-button" 
-              disabled={disabledSell} 
+              disabled={disabledSell || isSelling}
               onClick={onSell}
               style={{ minHeight: '50px', fontSize: '16px', fontWeight: 'bold',backgroundColor:'#db9800' }}
             >
-              Sell to {teamId ? teamById(Number(teamId))?.name : 'Selected Team'}
+              {/* Sell to {teamId ? teamById(Number(teamId))?.name : 'Selected Team'} */}
+               {isSelling ? "Selling..." : `Sell to ${teamId ? teamById(Number(teamId))?.name : "Selected Team"}`}
             </button>
           </div>
           {error && <div className="empty" style={{ color: '#fca5a5' }}>{error}</div>}
