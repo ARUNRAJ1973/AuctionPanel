@@ -344,6 +344,21 @@
       "sold": false,
       "soldTo": null,
       "soldPrice": null
+    },
+    {
+      "id": "24",
+      "name": "Bharani",
+      "role": "All-Rounder",
+      "basePrice": 5000,
+      "image": "/images/24.jpg",
+      "stats": {
+        "matches": 5,
+        "runs": 50,
+        "wickets": 5
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
     }
   ],
   "teams": [
