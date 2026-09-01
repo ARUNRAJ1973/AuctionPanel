@@ -5,7 +5,6 @@ const PlayerAuctionSpinner = () => {
   const { players, teams, selectPlayer } = useAuction();
   const [isSpinning, setIsSpinning] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [spinCount, setSpinCount] = useState(0);
   const [resultPlayer, setResultPlayer] = useState(null);
   const animationRef = useRef(null);
   const spinTimeoutRef = useRef(null);
@@ -103,7 +102,6 @@ const PlayerAuctionSpinner = () => {
     setIsSpinning(false);
     setSelectedIndex(randomIndex);
     setOffset(0);
-    setSpinCount(prev => prev + 1);
 
     const player = list[randomIndex];
     if (player) {
@@ -138,7 +136,6 @@ const PlayerAuctionSpinner = () => {
   };
 
   if (unsoldPlayers.length === 0) {
-    const totalSpent = players.reduce((sum, p) => sum + (p.soldPrice || 0), 0);
     return (
       <div className="auc">
         <div className="panel" style={{

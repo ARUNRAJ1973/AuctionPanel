@@ -7,7 +7,7 @@ import ConfirmModal from "./ConfirmModal";
 const PlayerList = () => {
   const { players, deletePlayer, selectedPlayerId, undoAllSales } = useAuction();
   const { logout } = useAuth();
-  const [query, setQuery] = useState("");
+  const [query] = useState("");
 
   const [showUndoAllModal, setShowUndoAllModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);

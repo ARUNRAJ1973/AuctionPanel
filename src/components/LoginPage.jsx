@@ -10,8 +10,6 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Static demo credentials
-  const ADMIN_EMAIL = 'kpl@gmail.com';
-  const ADMIN_PASSWORD = '87654321';
   const USER_EMAIL = 'kpt@gmail.com';
   const USER_PASSWORD = 'kpt123';
 

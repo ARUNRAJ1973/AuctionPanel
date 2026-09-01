@@ -5,7 +5,6 @@ import TeamManager from './components/TeamManager';
 import AddPlayer from './components/AddPlayer';
 import PlayerList from './components/PlayerList';
 import AuctionPanel from './components/AuctionPanel';
-import SoldList from './components/SoldList';
 import WelcomeScreen from './components/WelcomeScreen';
 import LoginPage from './components/LoginPage';
 import ViewerDashboard from './components/ViewerDashboard';

@@ -12,7 +12,7 @@ const requestWithIdFallback = async (basePath, id, options = {}) => {
         // If original was a string, try as number; if number, try as string
         const alternativeId = typeof id === 'string' ? Number(id) : String(id);
         // Only retry if the alternative format is actually different
-        if (alternativeId != id) { // Using != for loose comparison
+        if (String(alternativeId) !== String(id)) {
           return await request(`${basePath}/${alternativeId}`, options);
         }
       } catch (retryError) {
@@ -206,4 +206,5 @@ export const auctionApi = {
   },
 };
 
-export default { playersApi, teamsApi, auctionApi };
+const apiService = { playersApi, teamsApi, auctionApi };
+export default apiService;

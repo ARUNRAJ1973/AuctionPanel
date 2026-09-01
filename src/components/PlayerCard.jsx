@@ -4,7 +4,7 @@ import ConfirmModal from "./ConfirmModal";
 
 const PlayerCard = ({ player, onAuction, onDelete, isSelected }) => {
   const { updatePlayer, undoSale, teamById } = useAuction();
-  const { id, name, role, basePrice, image, stats, sold, soldTo, soldPrice } = player;
+  const { id, name, basePrice, image, sold, soldTo, soldPrice } = player;
 
   const [showUndoModal, setShowUndoModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);

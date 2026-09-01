@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useAuction } from "../context/AuctionContext";
 
 const AddPlayer = () => {
   const { addPlayer } = useAuction();
-  const fileRef = useRef(null);
   const [form, setForm] = useState({ name: "", basePrice: "10000", image: "" });
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
