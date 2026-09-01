@@ -10,8 +10,8 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Static demo credentials
-  const ADMIN_EMAIL = 'kplcricket@gmail.com';
-  const ADMIN_PASSWORD = 'kplcricket';
+  const ADMIN_EMAIL = 'kpl@gmail.com';
+  const ADMIN_PASSWORD = '87654321';
   const USER_EMAIL = 'kpt@gmail.com';
   const USER_PASSWORD = 'kpt123';
 
@@ -20,7 +20,6 @@ const LoginPage = () => {
     setLoading(true);
     setError('');
 
-    // Simulate loading for better UX
     setTimeout(() => {
       const result = login(email, password);
       if (!result.success) {
@@ -28,11 +27,6 @@ const LoginPage = () => {
       }
       setLoading(false);
     }, 600);
-  };
-
-  const fillAdminCredentials = () => {
-    setEmail(ADMIN_EMAIL);
-    setPassword(ADMIN_PASSWORD);
   };
 
   const fillUserCredentials = () => {
@@ -48,12 +42,23 @@ const LoginPage = () => {
         <div className="login-circle circle-3"></div>
         <div className="login-circle circle-4"></div>
       </div>
-      
+
       <div className="login-container">
         <div className="login-side-panel">
           <div className="side-panel-content">
             <div className="brand-logo">
-              <div className="logo-icon">🏏</div>
+              <img
+                src="/auction.jpeg"
+                alt="Auction Panel Logo"
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '2px solid #ffffff',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                }}
+              />
               <h1>KPL Auction</h1>
             </div>
             <div className="brand-description">
@@ -82,7 +87,7 @@ const LoginPage = () => {
             <h2>Sign In</h2>
             <p>Access your auction account</p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
@@ -130,8 +135,8 @@ const LoginPage = () => {
               </div>
             )}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={`login-btn ${loading ? 'loading' : ''}`}
               disabled={loading}
             >
@@ -149,21 +154,9 @@ const LoginPage = () => {
             </button>
           </form>
 
-          {/* <div className="demo-section" style={{marginTop: 16}}>
-            <button 
-              type="button" 
-              className="demo-btn"
-              onClick={fillAdminCredentials}
-              disabled={loading}
-            >
-              <span className="demo-icon">🚀</span>
-              Use Admin Credentials
-            </button>
-          </div> */}
-
-          <div className="demo-section" style={{marginTop: 16}}>
-            <button 
-              type="button" 
+          <div className="demo-section" style={{ marginTop: 16 }}>
+            <button
+              type="button"
               className="demo-btn"
               onClick={fillUserCredentials}
               disabled={loading}

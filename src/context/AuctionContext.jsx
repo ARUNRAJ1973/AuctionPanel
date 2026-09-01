@@ -220,6 +220,25 @@ export const AuctionProvider = ({ children }) => {
     }
   }, [players]);
 
+  const undoAllSales = useCallback(async () => {
+    const soldList = players.filter(p => p.sold);
+    if (soldList.length === 0) return true;
+
+    try {
+      for (const p of soldList) {
+        if (p.soldTo && p.soldPrice) {
+          await auctionApi.undoPlayerSale(p.id, p.soldTo, p.soldPrice);
+        }
+      }
+      setPlayers(prev => prev.map(x => ({ ...x, sold: false, soldTo: null, soldPrice: null })));
+      setTeams(prev => prev.map(t => ({ ...t, spent: 0 })));
+      return true;
+    } catch (error) {
+      console.error('Error undoing all sales:', error);
+      return false;
+    }
+  }, [players]);
+
   const setTeamPurse = useCallback(async (id, purse) => {
     const val = Math.max(0, Number(purse) || 0);
     try {
@@ -231,17 +250,14 @@ export const AuctionProvider = ({ children }) => {
   }, []);
 
   const addPlayer = useCallback(async (player) => {
-    // player: { name, role, basePrice, image, stats }
     try {
       const nextId = await auctionApi.getNextPlayerId();
-      const base = Number(player.basePrice) || 0;
+      const base = Number(player.basePrice) || 10000;
       const newPlayer = {
         id: nextId,
         name: player.name?.trim() || `Player ${nextId}`,
-        role: player.role || "Batter",
         basePrice: base,
         image: player.image || `https://placehold.co/160x160?text=Player+${nextId}`,
-        stats: player.stats || { age: "-", batting: "-", bowling: "-", matches: 0, runs: 0, wickets: 0 },
         sold: false,
         soldTo: null,
         soldPrice: null,
@@ -330,10 +346,11 @@ export const AuctionProvider = ({ children }) => {
     setAllPurse,
     renameTeam,
     undoSale,
+    undoAllSales,
     addPlayer,
     updatePlayer,
     deletePlayer,
-  }), [players, teams, selectedPlayerId, selectedPlayer, currentBid, bidStep, loading, error, teamById, remainingOf, selectPlayer, clearSelected, incrementBid, decrementBid, setBidStep, markSold, addTeam, removeTeam, setTeamPurse, setAllPurse, renameTeam, undoSale, addPlayer, updatePlayer, deletePlayer]);
+  }), [players, teams, selectedPlayerId, selectedPlayer, currentBid, bidStep, loading, error, teamById, remainingOf, selectPlayer, clearSelected, incrementBid, decrementBid, setBidStep, markSold, addTeam, removeTeam, setTeamPurse, setAllPurse, renameTeam, undoSale, undoAllSales, addPlayer, updatePlayer, deletePlayer]);
 
   // Show loading state
   if (loading) {

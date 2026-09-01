@@ -3,8 +3,8 @@ const USERS_KEY = 'kpl_auction_users';
 const CURRENT_USER_KEY = 'kpl_auction_current_user';
 
 // Admin credentials
-const ADMIN_EMAIL = 'kplcricket@gmail.com';
-const ADMIN_PASSWORD = 'kplcricket';
+const ADMIN_EMAIL = 'kpl@gmail.com';
+const ADMIN_PASSWORD = '87654321';
 
 // Default regular user credentials
 const USER_EMAIL = 'kpt@gmail.com';
@@ -62,7 +62,7 @@ class UserService {
   // Register new user
   registerUser(email, password, name) {
     const users = this.getUsers();
-    
+
     // Check if user already exists
     if (users.find(user => user.email === email)) {
       throw new Error('User with this email already exists');
@@ -96,7 +96,7 @@ class UserService {
   loginUser(email, password) {
     const users = this.getUsers();
     const user = users.find(u => u.email === email && u.password === password);
-    
+
     if (!user) {
       throw new Error('Invalid email or password');
     }
@@ -108,7 +108,7 @@ class UserService {
       role: user.role,
       name: user.name
     };
-    
+
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(userToStore));
     return userToStore;
   }

@@ -10,6 +10,7 @@ import WelcomeScreen from './components/WelcomeScreen';
 import LoginPage from './components/LoginPage';
 import ViewerDashboard from './components/ViewerDashboard';
 import PlayerAuctionSpinner from './components/PlayerAuctionSpinner';
+import PwaInstallPrompt from './components/PwaInstallPrompt';
 import { AdminOnly } from './components/RoleBasedAccess';
 import { AuctionProvider, useAuction } from './context/AuctionContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -29,6 +30,7 @@ function useHashRoute() {
 const AdminMainPage = () => {
   return (
     <div>
+      <StickyTeamBar enableDetails={true} />
       <div className="au-container">
         <div className="main-grid">
           <div>
@@ -37,13 +39,6 @@ const AdminMainPage = () => {
             <AddPlayer />
           </div>
           <PlayerList />
-        </div>
-        <div style={{ marginTop: 16 }}>
-          {/* Sold list intentionally hidden on main per request; add back if needed */}
-        </div>
-        {/* Place sticky team bar at the very bottom after all players */}
-        <div style={{ marginTop: 16 }}>
-          <StickyTeamBar enableDetails={true} />
         </div>
       </div>
     </div>
@@ -86,18 +81,58 @@ const AuctionPage = ({ playerId }) => {
           <AuctionPanel onSold={(info) => setSoldInfo(info)} />
         </section>
       </div>
-      {soldInfo && (
-        <div className="overlay">
-          <div className="overlay__content">
-            <img src="https://media.giphy.com/media/26u4lOMA8JKSnL9Uk/giphy.gif" alt="success" className="overlay__gif" />
-            <h3>Sold successfully to {teamById(soldInfo.teamId)?.name}!</h3>
-            <div className="inline-form" style={{ justifyContent: 'center', gap: 12 }}>
-              <button className="btn" style={{backgroundColor:'#b34747'}} onClick={() => { undoSale(soldInfo.playerId); setSoldInfo(null); selectPlayer(soldInfo.playerId); }}>Undo</button>
-              <button className="btn primary" onClick={() => { window.location.hash = '#/'; }}>Go to main page</button>
+      {soldInfo && (() => {
+        const player = selectedPlayer || players.find(p => Number(p.id) === Number(soldInfo.playerId));
+        const team = teamById(soldInfo.teamId);
+        const price = soldInfo.price || player?.soldPrice || player?.basePrice || 10000;
+
+        return (
+          <div className="overlay" style={{ background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', zIndex: 99999 }}>
+            <div className="sold-popup-card">
+              <div className="sold-popup-badge">🎉 PLAYER SOLD</div>
+              
+              <div className="sold-popup-player">
+                <img 
+                  src={player?.image} 
+                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=150&auto=format&fit=crop&q=80"; }} 
+                  alt={player?.name} 
+                  className="sold-popup-avatar"
+                />
+                <div className="sold-popup-details">
+                  <h2 className="sold-popup-title">{player?.name || 'Player'}</h2>
+                  <p className="sold-popup-subtitle">
+                    Successfully sold to <span className="sold-popup-team">{team?.name || 'Team'}</span>
+                  </p>
+                  <div className="sold-popup-price">
+                    Winning Bid: ₹{Number(price).toLocaleString()}
+                  </div>
+                </div>
+              </div>
+
+              <div className="sold-popup-actions">
+                <button 
+                  className="btn primary" 
+                  style={{ backgroundColor: '#10b981', color: '#fff', border: 'none' }}
+                  onClick={() => { window.location.hash = '#/'; }}
+                >
+                  Go to Main Page
+                </button>
+                <button 
+                  className="btn danger" 
+                  style={{ backgroundColor: '#ef4444', color: '#fff', border: 'none' }}
+                  onClick={() => { 
+                    undoSale(soldInfo.playerId); 
+                    setSoldInfo(null); 
+                    selectPlayer(soldInfo.playerId); 
+                  }}
+                >
+                  Undo Sale
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 };
@@ -143,6 +178,7 @@ const AuctionPage = ({ playerId }) => {
 
     return (
       <AuctionProvider>
+        <PwaInstallPrompt />
         {route === 'auction' ? (
           <AdminOnly fallback={
             <div className="access-denied">
@@ -159,6 +195,14 @@ const AuctionPage = ({ playerId }) => {
           // Show different dashboards based on role
           isAdmin() ? <AdminMainPage /> : <ViewerDashboard />
         )}
+        <button 
+          className="mobile-reload-fab"
+          onClick={() => window.location.reload()}
+          title="Reload Page"
+          aria-label="Reload Page"
+        >
+          🔄
+        </button>
       </AuctionProvider>
     );
 };

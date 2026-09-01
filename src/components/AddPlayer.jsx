@@ -4,106 +4,102 @@ import { useAuction } from "../context/AuctionContext";
 const AddPlayer = () => {
   const { addPlayer } = useAuction();
   const fileRef = useRef(null);
-  const [form, setForm] = useState({ name: "", role: "Batter", basePrice: "", image: "", matches: "", runs: "", wickets: "" });
+  const [form, setForm] = useState({ name: "", basePrice: "10000", image: "" });
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const onPickImage = (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setForm(prev => ({ ...prev, image: url }));
-    }
-  };
-
-  const triggerPick = () => fileRef.current?.click();
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (!form.name.trim()) return;
     addPlayer({
       name: form.name,
-      role: form.role,
-      basePrice: Number(form.basePrice) || 0,
+      basePrice: Number(form.basePrice) || 10000,
       image: form.image || undefined,
-      stats: {
-        matches: Number(form.matches) || 0,
-        runs: Number(form.runs) || 0,
-        wickets: Number(form.wickets) || 0,
-      }
     });
-    setForm({ name: "", role: "Batter", basePrice: "", image: "", matches: "", runs: "", wickets: "" });
+    setForm({ name: "", basePrice: "10000", image: "" });
   };
 
   return (
-    <section className="panel" style={{ marginTop: 12 ,backgroundColor:'#e6e6e6'}}>
-      <h2 className="panel__title">Add Player</h2>
-      <form className="inline-form add-player-form" onSubmit={onSubmit} style={{ flexWrap: 'wrap', gap: 8 }}>
-        <input 
-          name="name" 
-          value={form.name} 
-          onChange={onChange} 
-          placeholder="Name" 
-          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
-        />
-        <select 
-          name="role" 
-          value={form.role} 
+    <section className="panel" style={{
+      marginTop: 20,
+      background: '#ffffff',
+      border: '1px solid #cbd5e1',
+      borderRadius: 20,
+      padding: 20,
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
+      boxSizing: 'border-box',
+      width: '100%',
+      maxWidth: '100%'
+    }}>
+      <h2 style={{
+        fontSize: 18,
+        fontWeight: 900,
+        color: '#0f172a',
+        margin: '0 0 14px 0',
+        fontStyle: 'italic',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6
+      }}>
+        <span>➕</span> Add Player
+      </h2>
+      <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', boxSizing: 'border-box' }}>
+        <input
+          name="name"
+          value={form.name}
           onChange={onChange}
-          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
-        >
-          <option value="Batter">Batter</option>
-          <option value="Bowler">Bowler</option>
-          <option value="All-Rounder">All-Rounder</option>
-          <option value="Wicket-Keeper">Wicket-Keeper</option>
-        </select>
-        <input 
-          name="basePrice" 
-          value={form.basePrice} 
-          onChange={onChange} 
-          placeholder="Base Price (₹)" 
-          type="number" 
-          min="0"
-          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
-        />
-        <input 
-          name="matches" 
-          value={form.matches} 
-          onChange={onChange} 
-          placeholder="Matches" 
-          type="number" 
-          min="0"
-          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
-        />
-        <input 
-          name="runs" 
-          value={form.runs} 
-          onChange={onChange} 
-          placeholder="Runs" 
-          type="number" 
-          min="0"
-          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
-        />
-        <input 
-          name="wickets" 
-          value={form.wickets} 
-          onChange={onChange} 
-          placeholder="Wickets" 
-          type="number" 
-          min="0"
-          style={{ minHeight: '44px', fontSize: '16px',backgroundColor:'#fff' }}
+          placeholder="Player Name"
+          style={{
+            minHeight: '42px',
+            fontSize: '14px',
+            fontWeight: 700,
+            backgroundColor: '#f8fafc',
+            border: '1.5px solid #cbd5e1',
+            borderRadius: 8,
+            padding: '0 12px',
+            width: '100%',
+            boxSizing: 'border-box',
+            outline: 'none'
+          }}
         />
         <input
-          name="image"
-          value={form.image}
-          onClick={triggerPick}
-          readOnly
-          placeholder="Click to choose image from gallery"
-          title="Click to open gallery"
-          style={{ minHeight: '44px', fontSize: '16px', cursor: 'pointer',backgroundColor:'#fff' }}
+          name="basePrice"
+          value={form.basePrice}
+          onChange={onChange}
+          placeholder="Base Price (₹)"
+          type="number"
+          min="0"
+          style={{
+            minHeight: '42px',
+            fontSize: '14px',
+            fontWeight: 700,
+            backgroundColor: '#f8fafc',
+            border: '1.5px solid #cbd5e1',
+            borderRadius: 8,
+            padding: '0 12px',
+            width: '100%',
+            boxSizing: 'border-box',
+            outline: 'none'
+          }}
         />
-        <input ref={fileRef} type="file" accept="image/*" onChange={onPickImage} style={{ display: 'none' }} />
-        <button className="btn primary" type="submit" style={{backgroundColor:'#05552ad2',fontWeight:'bold',color:'#fff', minHeight: '44px' ,width:'100%'}}>Add</button>
+        <button
+          type="submit"
+          style={{
+            minHeight: '44px',
+            fontSize: '14px',
+            fontWeight: 900,
+            color: '#fff',
+            background: 'linear-gradient(135deg, #047857, #065f46)',
+            border: 'none',
+            borderRadius: 10,
+            width: '100%',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(4, 120, 87, 0.25)',
+            boxSizing: 'border-box'
+          }}
+        >
+          Add Player
+        </button>
       </form>
     </section>
   );

@@ -2,28 +2,24 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAuction } from '../context/AuctionContext';
 
 const PlayerAuctionSpinner = () => {
-  const { players, selectPlayer } = useAuction();
+  const { players, teams, selectPlayer } = useAuction();
   const [isSpinning, setIsSpinning] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [spinCount, setSpinCount] = useState(0);
-  const [resultPlayer, setResultPlayer] = useState(null); // player object after auto-pick
+  const [resultPlayer, setResultPlayer] = useState(null);
   const animationRef = useRef(null);
   const spinTimeoutRef = useRef(null);
 
-  // Vertical scroll state
   const listRef = useRef(null);
-  const itemHeightRef = useRef(44);
-  const [offset, setOffset] = useState(0); // pixel offset for smooth scroll
+  const itemHeightRef = useRef(48);
+  const [offset, setOffset] = useState(0);
 
-  // Get only unsold players
   const unsoldPlayers = players.filter(player => !player.sold);
 
-  // Fixed item height for stability across renders
   useEffect(() => {
     itemHeightRef.current = 48;
   }, [unsoldPlayers.length]);
 
-  // Smooth vertical scroll loop with auto-stop handled externally
   useEffect(() => {
     if (!isSpinning) {
       if (animationRef.current) {
@@ -42,14 +38,14 @@ const PlayerAuctionSpinner = () => {
 
     let last = performance.now();
     let px = 0;
-    const speed = 2400; // pixels per second (very fast)
+    const speed = 2400;
 
     const tick = (now) => {
-      const dt = (now - last) / 1000; // seconds
+      const dt = (now - last) / 1000;
       last = now;
-      px += speed * dt; // pixels advanced
+      px += speed * dt;
 
-      const h = itemHeightRef.current || 44;
+      const h = itemHeightRef.current || 48;
       if (px >= h) {
         px -= h;
         setSelectedIndex((prev) => (prev + 1) % currentUnsoldPlayers.length);
@@ -67,7 +63,6 @@ const PlayerAuctionSpinner = () => {
     };
   }, [isSpinning, players]);
 
-  // Cleanup timers on unmount
   useEffect(() => {
     return () => {
       if (spinTimeoutRef.current) {
@@ -81,9 +76,24 @@ const PlayerAuctionSpinner = () => {
     };
   }, []);
 
+  // Lock background scrolling when result overlay modal is displayed
+  useEffect(() => {
+    if (resultPlayer) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [resultPlayer]);
+
   const finishSpinWithPick = () => {
     const list = players.filter(p => !p.sold);
-    if (list.length === 0) { setIsSpinning(false); return; }
+    if (list.length === 0) {
+      setIsSpinning(false);
+      return;
+    }
 
     const randomIndex = Math.floor(Math.random() * list.length);
     if (animationRef.current) {
@@ -97,7 +107,7 @@ const PlayerAuctionSpinner = () => {
 
     const player = list[randomIndex];
     if (player) {
-      setResultPlayer(player); // Show result overlay with nice UI
+      setResultPlayer(player);
     }
   };
 
@@ -110,7 +120,6 @@ const PlayerAuctionSpinner = () => {
     setResultPlayer(null);
     setIsSpinning(true);
 
-    // Auto-stop after 3 seconds and pick a random player
     if (spinTimeoutRef.current) {
       clearTimeout(spinTimeoutRef.current);
     }
@@ -129,133 +138,421 @@ const PlayerAuctionSpinner = () => {
   };
 
   if (unsoldPlayers.length === 0) {
+    const totalSpent = players.reduce((sum, p) => sum + (p.soldPrice || 0), 0);
     return (
       <div className="auc">
-        <div className="panel">
-          <h2 className="panel__title">🎯 Player Auction Spinner</h2>
-          <div className="spinner-empty">
-            <div className="spinner-empty-icon">🎉</div>
-            <h3>All Players Sold!</h3>
-            <p>The auction is complete. All players have been sold to teams.</p>
+        <div className="panel" style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, #ecfdf5 50%, #f0fdf4 100%)',
+          borderRadius: 16,
+          border: '1.5px solid #a7f3d0',
+          padding: '20px 16px',
+          textAlign: 'center',
+          boxShadow: '0 10px 25px -5px rgba(4, 120, 87, 0.1)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          {/* Top Decorative Banner Pill */}
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            background: 'linear-gradient(135deg, #047857, #065f46)',
+            color: '#ffffff',
+            padding: '4px 12px',
+            borderRadius: 999,
+            fontSize: 10,
+            fontWeight: 900,
+            letterSpacing: 1,
+            textTransform: 'uppercase',
+            marginBottom: 12,
+            boxShadow: '0 2px 8px rgba(4, 120, 87, 0.25)'
+          }}>
+            <span>✨ AUCTION COMPLETED ✨</span>
+          </div>
+
+          {/* Trophy Icon */}
+          <div style={{
+            width: 52,
+            height: 52,
+            margin: '0 auto 10px auto',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 28,
+            boxShadow: '0 8px 18px rgba(217, 119, 6, 0.3)',
+            border: '2.5px solid #ffffff'
+          }}>
+            🏆
+          </div>
+
+          {/* Title & Subtitle */}
+          <h2 style={{
+            fontSize: 18,
+            fontWeight: 900,
+            color: '#065f46',
+            margin: '0 0 4px 0',
+            fontStyle: 'italic',
+            letterSpacing: '-0.2px'
+          }}>
+            🎉 All Players Sold!
+          </h2>
+          <p style={{
+            color: '#475569',
+            margin: '0 auto 14px auto',
+            fontSize: 12,
+            maxWidth: 380,
+            lineHeight: 1.4,
+            fontWeight: 600
+          }}>
+            Every player in the pool has been successfully auctioned & assigned to team rosters. The auction is complete!
+          </p>
+
+          {/* Key Metrics Cards */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
+            gap: 8,
+            maxWidth: 380,
+            margin: '0 auto'
+          }}>
+            <div style={{
+              background: '#ffffff',
+              border: '1px solid #cbd5e1',
+              borderRadius: 12,
+              padding: '8px 10px',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.02)'
+            }}>
+              <div style={{ fontSize: 9, fontWeight: 900, color: '#64748b', textTransform: 'uppercase', letterSpacing: 0.5 }}>TOTAL SOLD</div>
+              <div style={{ fontSize: 15, fontWeight: 900, color: '#0f172a', fontStyle: 'italic', marginTop: 2 }}>
+                {players.length} Players
+              </div>
+            </div>
+
+            {teams && teams.length > 0 && (
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid #cbd5e1',
+                borderRadius: 12,
+                padding: '8px 10px',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.02)'
+              }}>
+                <div style={{ fontSize: 9, fontWeight: 900, color: '#64748b', textTransform: 'uppercase', letterSpacing: 0.5 }}>TEAMS</div>
+                <div style={{ fontSize: 15, fontWeight: 900, color: '#d97706', fontStyle: 'italic', marginTop: 2 }}>
+                  {teams.length} Teams
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
     );
   }
 
-  // Build a doubled list for seamless vertical scrolling
   const names = unsoldPlayers.map(p => ({ id: p.id, name: p.name }));
   const looped = [...names, ...names];
 
-  // Compute translateY so that selectedIndex item appears under the center pointer row
   const h = 48;
-  const centerOffset = 2 * h; // middle of 5 visible rows
+  const centerOffset = 2 * h;
   const baseTranslate = -((selectedIndex * h + offset) - centerOffset);
+  const fallbackImage = "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&auto=format&fit=crop&q=80";
 
   return (
     <div className="auc">
-      <div className="panel"  style={{backgroundColor:'#e6e6e6',marginBottom:10}}>
-        <div className="panel__header-row">
-          <h2 className="panel__title">🎯 Player Auction Spinner</h2>
-          <div className="spinner-stats">
-            <span className="unsold-count">{unsoldPlayers.length} players left</span>
+      <div className="panel" style={{ background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: 20, padding: 20, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)', marginBottom: 16 }}>
+
+        {/* Header Row */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
+          <h2 style={{ fontSize: 18, fontWeight: 900, color: '#0f172a', margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span>🎯</span> Player Auction Spinner
+          </h2>
+          <div style={{ background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '4px 12px', borderRadius: 999, fontSize: 12, fontWeight: 800, letterSpacing: 0.5 }}>
+            {unsoldPlayers.length} PLAYERS LEFT
           </div>
         </div>
 
-        {/* Vertical name scroller */}
-        <div className="spinner-container" style={{ position: 'relative', height: `${h * 5}px`, overflow: 'hidden', borderRadius: 12, border: '1px solid var(--border)' }}>
-          {/* Fade masks for top and bottom for professional look */}
-          <div aria-hidden style={{ position:'absolute', top:0, left:0, right:0, height: h, background: 'linear-gradient(180deg, rgba(245,245,245,0.9), rgba(255, 0, 0, 0))', pointerEvents:'none', zIndex:2 }} />
-          <div aria-hidden style={{ position:'absolute', bottom:0, left:0, right:0, height: h, background: 'linear-gradient(0deg, rgba(245,245,245,0.9), rgba(245,245,245,0))', pointerEvents:'none', zIndex:2 }} />
+        {/* Casino-Grade Slot Wheel Reel */}
+        <div style={{
+          position: 'relative',
+          height: `${h * 5}px`,
+          overflow: 'hidden',
+          borderRadius: 16,
+          border: '2px solid #e2e8f0',
+          background: 'linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)',
+          boxShadow: 'inset 0 4px 12px rgba(0, 0, 0, 0.05)'
+        }}>
+          {/* Top & Bottom Depth Vignette Fade Masks */}
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: h * 1.2, background: 'linear-gradient(180deg, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0))', pointerEvents: 'none', zIndex: 3 }} />
+          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: h * 1.2, background: 'linear-gradient(0deg, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0))', pointerEvents: 'none', zIndex: 3 }} />
 
-          {/* Pointer lane */}
-          <div aria-hidden style={{ position:'absolute', top:110, left:0, right:0, height: h, background:'rgba(37,99,235,0.08)', borderTop:'1px solid rgba(37,99,235,0.25)', borderBottom:'1px solid rgba(37,99,235,0.25)', zIndex:1 }} />
+          {/* Golden Amber Winner Highlight Pointer Lane */}
+          <div aria-hidden style={{
+            position: 'absolute',
+            top: 2 * h,
+            left: 0,
+            right: 0,
+            height: h,
+            background: 'linear-gradient(90deg, rgba(217, 119, 6, 0.08), rgba(217, 119, 6, 0.2), rgba(217, 119, 6, 0.08))',
+            borderTop: '2px solid #d97706',
+            borderBottom: '2px solid #d97706',
+            boxShadow: '0 0 16px rgba(217, 119, 6, 0.25)',
+            zIndex: 2,
+            pointerEvents: 'none'
+          }} />
 
-          <div ref={listRef} style={{ willChange: 'transform', transform: `translateY(${baseTranslate}px)`, transition: isSpinning ? 'none' : 'transform 120ms ease-out', position:'relative', zIndex:0 }}>
-            {looped.map((p, idx) => (
-              <div key={`${p.id}-${idx}`} className={`name-item ${idx % names.length === selectedIndex ? 'selected' : ''}`} style={{
-                height: `${h}px`, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 12px',
-                borderBottom: '1px dashed var(--border)', fontWeight: idx % names.length === selectedIndex ? 800 : 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',fontStyle:'italic'
-              }}>
-                {p.name}
-              </div>
-            ))}
+          {/* Rolling Names Strip */}
+          <div ref={listRef} style={{ willChange: 'transform', transform: `translateY(${baseTranslate}px)`, transition: isSpinning ? 'none' : 'transform 120ms ease-out', position: 'relative', zIndex: 1 }}>
+            {looped.map((p, idx) => {
+              const isSelected = idx % names.length === selectedIndex;
+              return (
+                <div
+                  key={`${p.id}-${idx}`}
+                  style={{
+                    height: `${h}px`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '0 16px',
+                    borderBottom: '1px dashed #e2e8f0',
+                    fontWeight: isSelected ? 900 : 600,
+                    fontSize: isSelected ? 18 : 14,
+                    color: isSelected ? '#d97706' : '#475569',
+                    fontStyle: 'italic',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    transition: 'color 0.15s ease, font-size 0.15s ease'
+                  }}
+                >
+                  {p.name}
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        <div className="spinner-controls" style={{ display: 'flex', gap: 8 }}>
+        {/* Action Controls */}
+        <div style={{ display: 'flex', gap: 10, marginTop: 16 }}>
           <button
-            className={"playeredit"}
             onClick={handleSpin}
             disabled={isSpinning}
-            style={{backgroundColor:'#b7c1b8da',boxShadow:'5px 5px 10px #59605fff' }}
             type="button"
-            title="Spin for 3 seconds and auto-pick"
+            style={{
+              flex: 1,
+              minHeight: 48,
+              borderRadius: 12,
+              background: isSpinning ? '#cbd5e1' : 'linear-gradient(135deg, #d97706, #b45309)',
+              color: '#ffffff',
+              border: 'none',
+              fontSize: 15,
+              fontWeight: 900,
+              cursor: isSpinning ? 'not-allowed' : 'pointer',
+              boxShadow: isSpinning ? 'none' : '0 6px 18px rgba(217, 119, 6, 0.35)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 6
+            }}
+            title="Spin for 3 seconds and pick a player"
           >
-            {isSpinning ? (
-              <>Spinning...</>
-            ) : (
-              <>Spin (3s)</>
-            )}
+            {isSpinning ? <>⚡ SPINNING...</> : <>🎲 SPIN (3S)</>}
           </button>
 
           <button
-            className={"playerdelete"}
             onClick={handleStop}
             disabled={!isSpinning}
             type="button"
-            style={{ minWidth: 140 ,backgroundColor:'#b34747',fontWeight:'bold',boxShadow:'5px 5px 10px #090908ff' }}
-            title="Stop now and pick a random player"
+            style={{
+              flex: 1,
+              minHeight: 48,
+              borderRadius: 12,
+              background: !isSpinning ? '#f1f5f9' : 'linear-gradient(135deg, #ef4444, #dc2626)',
+              color: !isSpinning ? '#94a3b8' : '#ffffff',
+              border: !isSpinning ? '1px solid #cbd5e1' : 'none',
+              fontSize: 15,
+              fontWeight: 900,
+              cursor: !isSpinning ? 'not-allowed' : 'pointer',
+              boxShadow: !isSpinning ? 'none' : '0 6px 18px rgba(239, 68, 68, 0.35)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 6
+            }}
+            title="Stop now and pick immediately"
           >
-            Stop Now
+            🛑 STOP NOW
           </button>
         </div>
 
+        {/* Live Spinning Indicator Bar */}
         {isSpinning && (
-          <div className="spinner-status">
-            <div className="spinner-loading">
-              <div className="loading-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <p style={{fontWeight:'bold'}}>Selecting player for auction...</p>
-            </div>
+          <div style={{
+            marginTop: 12,
+            background: '#fef3c7',
+            border: '1px solid #fde68a',
+            color: '#b45309',
+            borderRadius: 12,
+            padding: '10px 14px',
+            textAlign: 'center',
+            fontSize: 13,
+            fontWeight: 800,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8
+          }}>
+            <span>⚡ Selecting random player for auction...</span>
           </div>
         )}
       </div>
 
+      {/* Selected Player Result Overlay Modal */}
       {resultPlayer && (
-        <div className="overlay" style={{position:'fixed', inset:0, background:'rgba(0,0,0,0.55)', display:'flex', alignItems:'center', justifyContent:'center', zIndex:9999}}>
+        <div className="overlay" style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(15, 23, 42, 0.8)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 99999,
+          padding: '16px'
+        }}>
           <div className="overlay__content" style={{
-            background: 'linear-gradient(180deg,#111827,#0b1220)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: 16,
-            padding: 24,
-            width: 'min(520px, 92vw)',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.35)',
-            color: '#fff',
-            textAlign: 'center'
+            background: '#ffffff',
+            border: '1px solid #cbd5e1',
+            borderRadius: 24,
+            padding: '24px 20px',
+            width: 'min(440px, 94vw)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            color: '#0f172a',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 16
           }}>
-            <div style={{fontSize: 14, letterSpacing: 2, color:'#9CA3AF', textTransform:'uppercase'}}>Selected Player</div>
-            <div style={{display:'flex', alignItems:'center', justifyContent:'center', gap:16, marginTop:10}}>
-              <img src={resultPlayer.image || `https://placehold.co/80x80?text=${encodeURIComponent(resultPlayer.name||'P')}`}
-                   alt={resultPlayer.name}
-                   style={{ width: 80, height: 80, borderRadius: 12, objectFit:'cover', border:'1px solid rgba(255,255,255,0.12)' }} />
-              <div style={{textAlign:'left'}}>
-                <h2 style={{fontSize: 28, margin: 0, letterSpacing: 0.3}}>{resultPlayer.name}</h2>
-                <div style={{color:'#A5B4FC', fontWeight:600}}>{resultPlayer.role}</div>
+            <div style={{
+              background: 'linear-gradient(135deg, #d97706, #b45309)',
+              color: '#ffffff',
+              padding: '6px 18px',
+              borderRadius: 999,
+              fontSize: 11,
+              fontWeight: 900,
+              letterSpacing: 1,
+              textTransform: 'uppercase',
+              boxShadow: '0 4px 12px rgba(217, 119, 6, 0.3)'
+            }}>
+              🎉 SELECTED FOR AUCTION
+            </div>
+
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 14,
+              width: '100%'
+            }}>
+              <div style={{
+                position: 'relative',
+                width: 220,
+                height: 220,
+                borderRadius: 20,
+                overflow: 'hidden',
+                border: '4px solid #cbd5e1',
+                boxShadow: '0 12px 28px rgba(0, 0, 0, 0.15)',
+                background: '#f8fafc'
+              }}>
+                <img
+                  src={resultPlayer.image || fallbackImage}
+                  onError={(e) => { e.target.src = fallbackImage; }}
+                  alt={resultPlayer.name}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                />
               </div>
+
+              <h2 style={{
+                fontSize: 26,
+                margin: 0,
+                fontWeight: 900,
+                color: '#0f172a',
+                fontStyle: 'italic',
+                letterSpacing: '-0.3px'
+              }}>
+                {resultPlayer.name}
+              </h2>
             </div>
-            <div style={{display:'flex', alignItems:'center', justifyContent:'center', gap: 12, margin:'16px 0 18px'}}>
-              <div style={{padding:'6px 10px', border:'1px solid rgba(255,255,255,0.12)', borderRadius: 999, background:'rgba(255,255,255,0.04)'}}>Unsold count: {unsoldPlayers.length}</div>
-              <div style={{padding:'6px 10px', border:'1px solid rgba(255,255,255,0.12)', borderRadius: 999, background:'rgba(255,255,255,0.04)'}}>Base ₹{Number(resultPlayer.basePrice).toLocaleString()}</div>
+
+            {/* Centered Base Price Tag */}
+            <div style={{
+              padding: '8px 20px',
+              border: '1px solid #a7f3d0',
+              borderRadius: 12,
+              background: '#ecfdf5',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              boxShadow: '0 2px 6px rgba(4, 120, 87, 0.08)'
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#047857', textTransform: 'uppercase', letterSpacing: 0.5 }}>BASE PRICE:</span>
+              <span style={{ fontSize: 17, fontWeight: 900, color: '#047857', fontStyle: 'italic' }}>
+                ₹{Number(resultPlayer.basePrice).toLocaleString()}
+              </span>
             </div>
-            <div className="inline-form" style={{ display:'flex', justifyContent:'center', gap: 12 }}>
-              <button className="btn" style={{background:'#374151', color:'#fff'}} onClick={() => setResultPlayer(null)}>Close</button>
-              <button className="btn primary" style={{background:'#2563EB', color:'#fff'}} onClick={() => {
-                selectPlayer(resultPlayer.id);
-                setResultPlayer(null);
-                window.location.hash = `#/auction/${resultPlayer.id}`;
-              }}>Go to Auction</button>
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 10, width: '100%', marginTop: 4 }}>
+              <button
+                type="button"
+                style={{
+                  flex: 1.5,
+                  minHeight: 44,
+                  borderRadius: 12,
+                  background: 'linear-gradient(135deg, #d97706, #b45309)',
+                  color: '#ffffff',
+                  border: 'none',
+                  fontSize: 13,
+                  fontWeight: 900,
+                  cursor: 'pointer',
+                  boxShadow: '0 6px 18px rgba(217, 119, 6, 0.4)',
+                  transition: 'all 0.2s ease'
+                }}
+                onClick={() => {
+                  selectPlayer(resultPlayer.id);
+                  setResultPlayer(null);
+                  window.location.hash = `#/auction/${resultPlayer.id}`;
+                }}
+              >
+                ⚡ GO TO AUCTION
+              </button>
+              <button
+                type="button"
+                style={{
+                  flex: 1,
+                  minHeight: 44,
+                  borderRadius: 12,
+                  background: '#f1f5f9',
+                  color: '#475569',
+                  border: '1px solid #cbd5e1',
+                  fontSize: 13,
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onClick={() => setResultPlayer(null)}
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

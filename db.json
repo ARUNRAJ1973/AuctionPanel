@@ -1,7 +1,7 @@
 {
   "players": [
     {
-       "id": "1",
+      "id": "1",
       "name": "Aravind",
       "role": "All-Rounder",
       "basePrice": 10000,
@@ -19,7 +19,7 @@
       "id": "2",
       "name": "Sathish",
       "role": "All-Rounder",
-      "basePrice": 35000,
+      "basePrice": 10000,
       "image": "/images/2.jpg",
       "stats": {
         "matches": 10,
@@ -30,11 +30,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
+    {
       "id": "3",
       "name": "Sivaram",
       "role": "All-Rounder",
-      "basePrice": 35000,
+      "basePrice": 10000,
       "image": "/images/3.jpg",
       "stats": {
         "matches": 10,
@@ -49,7 +49,7 @@
       "id": "4",
       "name": "Anandh",
       "role": "All-Rounder",
-      "basePrice": 30000,
+      "basePrice": 10000,
       "image": "/images/4.jpg",
       "stats": {
         "matches": 10,
@@ -60,11 +60,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
-       "id": "5",
+    {
+      "id": "5",
       "name": "Arun",
       "role": "All-Rounder",
-      "basePrice": 30000,
+      "basePrice": 10000,
       "image": "/images/5.jpg",
       "stats": {
         "matches": 10,
@@ -79,7 +79,7 @@
       "id": "6",
       "name": "Saran",
       "role": "All-Rounder",
-      "basePrice": 25000,
+      "basePrice": 10000,
       "image": "/images/6.jpg",
       "stats": {
         "matches": 10,
@@ -90,11 +90,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
+    {
       "id": "7",
       "name": "Raj sekar",
       "role": "All-Rounder",
-      "basePrice": 20000,
+      "basePrice": 10000,
       "image": "/images/7.jpg",
       "stats": {
         "matches": 10,
@@ -105,11 +105,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-        {
+    {
       "id": "8",
       "name": "Naveen",
       "role": "All-Rounder",
-      "basePrice": 20000,
+      "basePrice": 10000,
       "image": "/images/8.jpg",
       "stats": {
         "matches": 10,
@@ -135,11 +135,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
+    {
       "id": "10",
       "name": "Barath",
       "role": "All-Rounder",
-      "basePrice": 15000,
+      "basePrice": 10000,
       "image": "/images/10.jpg",
       "stats": {
         "matches": 10,
@@ -150,7 +150,7 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
+    {
       "id": "11",
       "name": "Nandha",
       "role": "All-Rounder",
@@ -165,7 +165,7 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
+    {
       "id": "12",
       "name": "Giri",
       "role": "All-Rounder",
@@ -179,7 +179,7 @@
       "sold": false,
       "soldTo": null,
       "soldPrice": null
-    },   
+    },
     {
       "id": "13",
       "name": "Varathan",
@@ -195,11 +195,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-        {
+    {
       "id": "14",
       "name": "Ashwin",
       "role": "All-Rounder",
-      "basePrice": 15000,
+      "basePrice": 10000,
       "image": "/images/14.jpg",
       "stats": {
         "matches": 10,
@@ -210,11 +210,11 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
+    {
       "id": "15",
       "name": "Mathesh",
       "role": "All-Rounder",
-      "basePrice": 5000,
+      "basePrice": 10000,
       "image": "/images/15.jpg",
       "stats": {
         "matches": 10,
@@ -229,7 +229,7 @@
       "id": "16",
       "name": "Aakash",
       "role": "All-Rounder",
-      "basePrice": 5000,
+      "basePrice": 10000,
       "image": "/images/16.jpg",
       "stats": {
         "matches": 10,
@@ -244,7 +244,7 @@
       "id": "17",
       "name": "Ravi",
       "role": "All-Rounder",
-      "basePrice": 5000,
+      "basePrice": 10000,
       "image": "/images/17.jpg",
       "stats": {
         "matches": 10,
@@ -255,12 +255,12 @@
       "soldTo": null,
       "soldPrice": null
     },
-     {
-      "id": "19",
-      "name": "Nethaji",
+    {
+      "id": "18",
+      "name": "Praveen raj",
       "role": "All-Rounder",
-      "basePrice": 5000,
-       "image": "/images/19.jpg",
+      "basePrice": 10000,
+      "image": "/images/20.jpg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -271,11 +271,11 @@
       "soldPrice": null
     },
     {
-      "id": "18",
-      "name": "Kathir",
+      "id": "19",
+      "name": "Sarath",
       "role": "All-Rounder",
-      "basePrice": 5000,
-      "image": "/images/18.jpg",
+      "basePrice": 10000,
+      "image": "/images/20.jpg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -302,19 +302,19 @@
     },
     {
       "id": "21",
-     "name": "Vinoth",
-     "role": "All-Rounder",
-     "basePrice": 10000,
-     "image": "/images/21.jpg",
-     "stats": {
-       "matches": 10,
-       "runs": 30,
-       "wickets": 1
-     },
-     "sold": false,
-     "soldTo": null,
-     "soldPrice": null
-   },
+      "name": "Vinoth",
+      "role": "All-Rounder",
+      "basePrice": 10000,
+      "image": "/images/21.jpg",
+      "stats": {
+        "matches": 10,
+        "runs": 30,
+        "wickets": 1
+      },
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
     {
       "id": "22",
       "name": "Raj",
@@ -332,10 +332,10 @@
     },
     {
       "id": "23",
-      "name": "Kiruba",
+      "name": "Siva",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/23.jpg",
+      "image": "/images/20.jpg",
       "stats": {
         "matches": 5,
         "runs": 50,
@@ -347,15 +347,27 @@
     },
     {
       "id": "24",
-      "name": "Bharani",
-      "role": "All-Rounder",
-      "basePrice": 5000,
-      "image": "/images/24.jpg",
-      "stats": {
-        "matches": 5,
-        "runs": 50,
-        "wickets": 5
-      },
+      "name": "Davit",
+      "basePrice": 10000,
+      "image": "/images/20.jpg",
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "25",
+      "name": "Prakash",
+      "basePrice": 10000,
+      "image": "/images/20.jpg",
+      "sold": false,
+      "soldTo": null,
+      "soldPrice": null
+    },
+    {
+      "id": "26",
+      "name": "Pazhani",
+      "basePrice": 10000,
+      "image": "/images/20.jpg",
       "sold": false,
       "soldTo": null,
       "soldPrice": null
