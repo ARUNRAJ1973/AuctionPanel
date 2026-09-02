@@ -227,7 +227,7 @@
     },
     {
       "id": "16",
-      "name": "Aakash",
+      "name": "Akash",
       "role": "All-Rounder",
       "basePrice": 10000,
       "image": "/images/16.jpg",
@@ -260,7 +260,7 @@
       "name": "Praveen raj",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/20.jpg",
+      "image": "/images/18.jpg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -275,7 +275,7 @@
       "name": "Sarath",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/20.jpg",
+      "image": "/images/19.jpg",
       "stats": {
         "matches": 5,
         "runs": 30,
@@ -335,7 +335,7 @@
       "name": "Siva",
       "role": "All-Rounder",
       "basePrice": 10000,
-      "image": "/images/20.jpg",
+      "image": "/images/23.jpg",
       "stats": {
         "matches": 5,
         "runs": 50,
@@ -349,7 +349,7 @@
       "id": "24",
       "name": "Davit",
       "basePrice": 10000,
-      "image": "/images/20.jpg",
+      "image": "/images/24.jpg",
       "sold": false,
       "soldTo": null,
       "soldPrice": null
@@ -358,7 +358,7 @@
       "id": "25",
       "name": "Prakash",
       "basePrice": 10000,
-      "image": "/images/20.jpg",
+      "image": "/images/25.jpg",
       "sold": false,
       "soldTo": null,
       "soldPrice": null
@@ -367,7 +367,7 @@
       "id": "26",
       "name": "Pazhani",
       "basePrice": 10000,
-      "image": "/images/20.jpg",
+      "image": "/images/26.jpg",
       "sold": false,
       "soldTo": null,
       "soldPrice": null
